@@ -1,5 +1,5 @@
 # aaron-tests
 hello
 maya
-Git Commands
-test
+
+This repo is being used to learn Git
