@@ -1,0 +1,59 @@
+SCALA FUNDAMENTALS
+
+- Scala was based on the JVM (Java Virtual Machine) making it compatible with all the libraries written in the Java ecosystem. You can use any Java code in Scala.
+
+- An expressive and powerful language with a blend of functional and object orientated programming.
+
+- Scala has dynamic features.
+
+- Scala is less verbose than Java. You can write less and achieve more.
+
+- Demand for Scala engineers has syrocketed in recent years.
+
+- Scala engineers are some of the highest paid in the industry.
+
+- Scala is statically typed language. This means that a variable has a type. You must specify a type for every variable. Type errors are caught by the compiler and not by run time (need further research)
+Scala uses type interfacing meaning it figures out the type for the variable. Must be familiar with error messages.
+
+- Scala is more flexible for example you can write multiple classes in one file (need further research)
+
+WHY LEARN SCALA?
+
+1. You can use Java libraries in Scala code.
+
+2. You can use Java code in Scala programs and you can use Scala code in Java programs.
+
+3. You can use existing Java tools in Scala like Ant, Maven and J-unit.
+
+4. Simplicity of Ruby with static typing and compiled byte code.
+
+
+WHAT IS SBT??
+
+- SBT meaning Scala Build Tool is an open source build tool for Scala 
+and Java projects, similar to Java's Maven and Ant.
+
+- A build tool basically provides a facility for you to compile, run, test and package your projects.
+
+- SBT is a modern build tool and you can use it to create Java and Scala projects. It's the de facto build tool for Scala.
+
+
+WHAT IS THE SIGNIFICANCE OF SBT?
+
+- SBT allows for native support for compiling Scala code.
+
+- SBT uses Apache Ivy for dependecy manacgement and so supports maven repositories.
+
+- SBT operates on the only-update-on-request model.
+
+- SBT has full Scala language support for creating tasks.
+
+- SBT supports mixed Java and Scala projects.
+
+- SBT comes with REPL (READ-EVAL-PRINT LOOP) which is an IDE.
+
+
+
+
+
+
