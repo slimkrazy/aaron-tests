@@ -2,6 +2,8 @@ SCALA FUNDAMENTALS
 
 - Scala was based on the JVM (Java Virtual Machine) making it compatible with all the libraries written in the Java ecosystem. You can use any Java code in Scala.
 
+- Scala is a compiled language like C not an interpretive language like Python. 
+
 - An expressive and powerful language with a blend of functional and object orientated programming.
 
 - Scala has dynamic features.
@@ -16,6 +18,7 @@ SCALA FUNDAMENTALS
 Scala uses type interfacing meaning it figures out the type for the variable. Must be familiar with error messages.
 
 - Scala is more flexible for example you can write multiple classes in one file (need further research)
+
 
 WHY LEARN SCALA?
 
@@ -50,9 +53,33 @@ WHAT IS THE SIGNIFICANCE OF SBT?
 
 - SBT supports mixed Java and Scala projects.
 
-- SBT comes with REPL (READ-EVAL-PRINT LOOP) which is an IDE.
+- SBT comes with REPL (READ-EVAL-PRINT LOOP) which is an interactive computer environment. REPL takes a single input from the user
+evaluates it and returns the result. You test features made with Scala with REPL.
+
+**JAVAC command is used to compile the java source files.
 
 
+CREATING A SCALA PROJECT USING SBT:
+
+1. mkdir scala-samples
+
+2. cd scala-samples and make directory called sbt_proj within scala-samples 
+
+3. cd sbt_proj, run "sbt" command
+
+4. sbt server should be established, use "exit" command to get out of sbt command prompt
+
+
+DATA TYPES AND VARIABLES IN SCALA:
+
+- Because Scala is a compiled language any code we use to decalre variables will be converted to class files
+and then the output will be shown.
+
+- A folder must be created in which we will be using the Scala REPL (READ-EVAL-PRINT LOOP).
+
+- mkdir variables within scala-samples directory. 
+
+- cd variables. To start the Scala REPL we use "sbt console" command.
 
 
 
