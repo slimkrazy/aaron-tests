@@ -70,16 +70,47 @@ CREATING A SCALA PROJECT USING SBT:
 4. sbt server should be established, use "exit" command to get out of sbt command prompt
 
 
-DATA TYPES AND VARIABLES IN SCALA:
+DATA TYPES AND VARIABLES IN SCALA (FIRST SCALA PROGRAM):
 
-- Because Scala is a compiled language any code we use to decalre variables will be converted to class files
+- Because Scala is a compiled language any code we use to decLare variables will be converted to class files
 and then the output will be shown.
 
-- A folder must be created in which we will be using the Scala REPL (READ-EVAL-PRINT LOOP).
+- DATA TYPES WE CAN USE IN SCALA:
 
-- mkdir variables within scala-samples directory. 
+- Boolean (true or false)
+- Byte
+- Short
+- Char
+- Int
+- String
+- Long
+- Float
+- Double
+- String 
+- Unit - Corresponds to no value
+- Null - Corresponds to null or empty reference
+- Nothing - The subtype of any type
+- Any - The supertype of any type
+- Anyref - The supertype of any reference type
 
-- cd variables. To start the Scala REPL we use "sbt console" command.
+1. A folder must be created in which we will be using the Scala REPL (READ-EVAL-PRINT LOOP).
+
+2. mkdir variables within scala-samples directory. 
+
+3. cd variables. To start the Scala REPL we use "sbt console" command.
+
+HOW DO WE DECLARE VARIABLES IN SCALA?
+
+Variables can be declared in 2 ways in Scala. The first way is by using "var"
+By declaring the variable using var, the value of the variable is mutable and so it can be changed ;ater.
+Example - var a : Int = 7 (1. var - mutable value variable 2. "a" the name of the variable
+3. colon 4. Int - name of type of value 4. value of the data type).
+
+- We have now declared the following: a: Int = 7 (a variable whose name is a with a data type of Int
+that is equal to 7.) 
+
+- "res2:" this is a temp variable that increases by one every time we use the scala REPL above
+For example if we do a + 10, the value will increase by 1 to "res3:"
 
 
 
