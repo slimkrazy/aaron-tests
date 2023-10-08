@@ -112,6 +112,41 @@ that is equal to 7.)
 - "res2:" this is a temp variable that increases by one every time we use the scala REPL above
 For example if we do a + 10, the value will increase by 1 to "res3:"
 
+The second way in which we can declare a variable in scala is via "val". This is how you declare an
+IMMUTABLE variable meaning the value of the variable cannot be changed unlike variable set by var.
 
+** Scala has a feature that allows it to automatically recognise the data type of a program by the initialisation value
+For example: val d = 5 will automatically understand it's referring to integers d: Int = 5
 
+SCALA FEATURES:
 
+- You can use multiple expressions using a curly bracket: 
+- val y = {val e: Int = 500 ; val f: Int = 550; e + f} (remember to put the "=" sign after you state the variable)
+- The expressions are separated using a ";".
+- IMPORTANTLY, the last expression in the curly bracket is what will be returned as the value of the variable.
+- You can also separate expressions by pressing enter:
+
+val x = {
+    val a: Int = 144
+    val b: Int = 145
+    val c: Int = 146
+    a+b+c  
+}
+x: Int = 435
+
+- You can assign "lazy" to initialise a variable. This means that the value of the variable will only be initilised
+when it is used.
+- We do this when we want to save memory. If we have a list of thousands of variables, rather than allocating that memory upfront
+despite the risk of some variables never being used, we use "lazy" to initialise the variable causing the value of the variable to only
+be initialised when it is used.:
+
+lazy val x = 500 
+x: Int = <lazy>
+
+- Meaning that the value of 500 is not assigned right now but when x is used, it will be.
+
+DOWNLOADING SCALA IDE INTELLIJ
+
+- We need a Scala IDE to debug, compile and format scala code. 
+- Eclipse is no longer available with a scala plugin so we use Intellij.
+- VScode is also an IDE.
