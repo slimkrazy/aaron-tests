@@ -1,0 +1,11 @@
+SCALA ROCK THE JVM: Lesson 1 (Getting Started)
+
+JVM:
+The JVM (Java Virtual Machine) allows computers to run Java programs and other languages that are compiled in Java Bitecode like Scala.
+This means that our Scala code will be compiled to the same bytecode that Java runs in.
+
+1. Cloned the rockthejvm github repo to my local repo.
+
+2. Created a new Scala project in the IDE Intellij, using Scala 2.
+
+3. Created a package named playground and then a file within said package named playground.
