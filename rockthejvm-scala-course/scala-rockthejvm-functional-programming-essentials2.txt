@@ -1,0 +1,74 @@
+SCALA FUNCTIONAL PROGRAMMING ESSENTIALS
+
+VALUES, VARIABLES AND TYPES
+
+- CREATING VALUES:
+
+- Syntax for declaring a value (val): val (name) x; (type) Int = (then the value of x)
+- Vals are immutable and cannot be changed. 
+- When writing Scala the compiler can infer the type for the value by reading from the right hand side.
+For example, val x = 144. The compiler recognises that 144 is an Int and therefore does not require you to
+declare it as such like this val x: Int = 144. If 144 is an Int, x must be an Int.
+- Ultimately the compiler can infer types.
+
+//TYPES:
+
+- Remember to capitalise the first character of the type: (String, Int, Boolean etc.)
+
+
+STRINGS (pieces of text in between double quotes):
+
+- Remember to use quotation marks "" when inputting the value of a string.
+
+
+BOOLEAN:
+
+- Boolean expression values are strictly true or false.
+For example val aBoolean: Boolean = True.
+
+
+INTEGERS:
+
+- You can give Ints the value of other vals say for example x = 144 you can then give y the same value. val y: Int = x
+- There are also other integer numerical values that are called shorts and longs.
+For example, val aShort: Short = 1234, val aLong: Long = 12345678910 however, if it's too long Scala will complain so when we want Scala to recognise that the value of the Int is a long number we have a capital 'L' at the end of the long Int.
+
+
+FLOATS:
+
+- Floats are a type pertaining to decimal values. For example val aFloat: Float = 1.5f
+Note the 'f' at the end as this tells the Scala compiler that the value is a decimal and not a double.
+
+
+DOUBLES:
+
+- Doubles are simpled decimal numerical values that you can use without the need for the 'f' after the input for example, val aDouble: Double = 22.22
+
+CHARACTERS:
+
+- Characters are represented via the type "Char". They are single characters between single quotes for example val aChar: Char = 'a'
+
+
+RUN APPLICATIONS:
+
+- "Extends App" (equivalent to creating a main function, which makes the application runnable)
+
+
+CREATING VALUES:
+
+- Syntax for declaring a value (val): val (name) x; (type) Int = (then the value of x)
+- Compiler can infer types (reads right to left) so val x = 144 works just as well as val x: Int = 144
+
+
+// VARIABLES:
+
+- In Scala, variables are represent by 'var'.
+- Unlike values 'val', variables 'var' can be reassigned, changed becuase they're mutable whereas values are immutable.
+
+
+WHAT ARE VARIABLES USED FOR:
+
+- Variables in functional programming are used for what's known as side effects. 
+- Side effects are useful because they allow us to see what our programs are doing.
+- An example of a side effect would be reassigning the value of a variable 'var', printing something to the console "println()" or displaying something on the screen.
+- We must be mindful of side effects and keep track of them.
