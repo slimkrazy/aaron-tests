@@ -72,3 +72,171 @@ WHAT ARE VARIABLES USED FOR:
 - Side effects are useful because they allow us to see what our programs are doing.
 - An example of a side effect would be reassigning the value of a variable 'var', printing something to the console "println()" or displaying something on the screen.
 - We must be mindful of side effects and keep track of them.
+- Side effects in Scala are EXPRESSIONS returning unit. 
+
+TYPES, VARIABLES AND VALUES (CODE):
+
+object ValuesVariablesTypes extends App {
+
+  val x = 144
+val y: String = "hello aharown"
+  println(y)
+
+
+  // VALS ARE IMMUTABLE THEY CANNOT BE CHANGED
+  // COMPLIER CAN INFER TYPES
+
+  val aString: String = "hello there"
+  println(aString)
+
+  val test = "yo"
+  println(test)
+
+
+  val aBooleam: Boolean = false
+
+  val aChar: Char = 'a'
+
+  val anInt: Int = x
+
+  val aShort: Short = 1234
+
+  val aLong: Long = 12345678
+
+  val aFloat: Float = 1.5f
+
+  val aDouble: Double = 22.55
+
+  // VARIABLES
+
+  var aVariable: Int = 7
+
+  aVariable = 5
+
+  
+  EXPRESSIONS
+
+MATHS EXPRESSIONS:
+
+  val x = 1 + 2 // the value of x (1 + 2) is known as an expression in Scala.
+   - Expressions are evaluated to a value and they have a type so in this case: x = 1 + 2
+   the value is 3 and the type is Int.
+
+   - Most basic expressions are maths expressions for example:   println(2 + 3 * 4)
+   - Expressions in Scala operate under BODMAS rules so multiplication is done first.
+   - These are the maths operators: + - * / & | << >> >>> (look into bitwise operators) 
+
+   
+RELATIONAL EXPRESSIONS:
+
+ Equality and non equality operations:
+
+- == is for equality
+- != is for non equality 
+
+- These type of expressions test for equality or non equality between two characters for example
+ println(1 == x) This is an expression that evaluates to a boolean type, since it's either true that 1 is equal to x or it's false.
+
+- ==, !=, >, >=, <, <= examples of relational operations
+
+Boolean operators:
+
+- The negation of 1 == x is (!(1 == x)). Inside the parentheses we have a condition.
+- This is the logical negation. Logical negation is a unary operator (operators with only 1 input, in this case !)
+- With the expression (!(1 == x)) we're asking if 1 isn't equal to x. 
+- With the expression (1==x) we're asking if 1 is equal to x.
+
+- ! (unary operator) && (logical and) || (logical or) (binary operators)
+- The output for these expressions will be a boolean (true or false)
+
+-   var aVariable = 2
+  aVariable += 3 will output 5 // also works with -= *= and /=.....side effects (changing vars) 
+
+- These operators above involving changing a variable like += and -= only work with variables. 
+This is because variables are mutable. When you change a var it is known as a side effect.
+
+
+INSTRUCTIONS VS EXPRESSIONS (WHATS THE DIFFERENCE?)
+
+- An instruction is something that you tell the computer to do. Examples would be change a var (+=), print to the console (println(x)) 
+
+- An expression is something that has a value and or a type. You're asing the machine to give you the value of something. 
+- In functional programming languages like Scala, we think in terms of expressions meaning all our code will compute a value.
+- An example of this would be the if expression in Scala:
+  val aCondition = true 
+  val aConditionedValue = if(aCondition) 5 else 3
+  println(aConditionedValue)
+- The code above is saying that the aConditionedValue is either 5 if the aCondition is true or 3 if it's false.
+- Crucially, the if expression if(aCondition) 5 else 3 actually outputs a value (5 or 3).
+
+- The "ifs" in scala are EXPRESSIONS not INSTRUCTIONS.
+
+
+WHILE LOOPS:
+
+  var i = 0
+  while (i < 10) {
+    println(i)
+    i += 1
+  }
+
+Goal is to have 0 - 9 printed in termnial
+  1. Initialised variable to 0: var i = 0
+  2. Create while loop using less than operator to 10: while (i < 10)
+  3. Print i: println(i)
+  4. change variable by +1 everytime it is less than 10: i += 1
+
+  BUT WE DON'T DO IT LIKE THIS IN SCALA
+
+  - Everything in Scala is an expression. Scala forces everything to be an expression.
+
+  "UNIT" TYPE IN SCALA:
+
+  - In the following example, the type associated with this value is a "Unit": val aWeirdvalue = (aVariable = 3) 
+  - Unit type is different in Scala, in other languages it's equivalent to "void".
+  - The only value "unit" can hold is ().
+  - Side effects in Scala are EXPRESSIONS returning unit.
+
+
+  SIDE EFFECTS (Side effects in Scala are EXPRESSIONS returning unit):
+
+  EXAMPLES OF SIDE EFFECTS:
+
+  - Printing something to the console: (println())
+  - Whiles: val aWhile = while (i > 10)
+  - Reassigning vars
+
+
+  CODE BLOCKS:
+
+  - Code blocks are essentially pieces of code surrounded by curly braces within which we write code (define values, write expressions). 
+  - Code block is an expression. Just consider the fact that it's put on the right hand side of a value expression.
+  - The value of the code block is the value of the last expression. In the example below, the expression would be if (z > 2) "hello" else "goodbye".
+  - Code blocks can have their own values defined within them as seen below with val y and z.
+
+  
+  Example:
+    val aCodeBlock = {
+    val y = 2
+    val z = y + 1
+
+    if (z > 2) "hello" else "goodbye"
+  }
+
+  Questions:
+
+  1. What's the difference between "hello world" and println("hello world")
+  Answer: "hello world" is a VALUE of type string and println("hello world") is an expression which is a side effect that returns unit
+
+  2. What's the value of: 
+  val someValue = {
+    2 < 3
+  }
+Answer: True. Remember, the value of a code block is the value of it's last expression. "2 < 3" is a relational operation.
+  
+  3. val someotherValue = {
+    if(someValue) 239 else 986
+    42
+  }
+Answer: 42 because as mentioned previously, the value of the code block is the value of the last expression.
+}
