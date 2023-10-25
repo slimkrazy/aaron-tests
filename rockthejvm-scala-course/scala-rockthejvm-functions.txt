@@ -1,0 +1,160 @@
+FUNCTIONS IN SCALA
+
+// FUNCTIONS: 
+
+-  A function is a self-contatined block of code that performs a specific task or operation. 
+
+WHAT ARE FUNCTIONS USED FOR:
+
+- Functions are used to modularise and organise code, making it more manageable and reusable. They typically take input parameters, perform some operations and return a result in the console.
+
+- Functions help to break down complex tasks into smaller, more manageable parts, enhancing code organisation, readability, and reusability.
+
+
+FUNCTION EXAMPLE:
+
+- Adding function: 
+
+def add(x, y):
+return x + y
+ (def is short for define. It is the keyword used.)
+
+
+ DEFINING FUNCTIONS IN SCALA:
+
+  def aFunction(a: String)
+
+  1. First we have the keyword used in Scala to define parameters "def"
+  2. Then the name of the function "aFunction"
+  3. Now we have parameters which are being specified within parentheses (a: String) 
+     parameter "a" of type "string"
+  
+  PURE FUNCTIONS:
+
+  - Pure functions don't have side effects. Remember side effects are when functions rely on or modify expressions outside of their parameters
+  to do something. An example would be when a function reads or writes from a variable (var) outside it's own arguments, database, file.
+
+  - EXAMPLE OF A PURE FUNCTION:
+
+  This is a pure function, calling triple(1) will always return 3.
+sub triple {
+  my $n = shift;
+
+  return $n * 3;
+}
+
+-   It's easier to test pure functions because the result of a pure function is dependent entirely on the input.
+-   It’s also much easier to run in parallel because it doesn’t rely on access to shared state. 
+-   Most importantly, it’s predictable: triple(5) will always return 15, regardless of how many times we run it or what the state of the surrounding system is saying.
+-   At Depop we want our core business logic to be pure functions and we want to push impure I/O functions to the outside/edge.
+
+ 
+ DEFINING FUNCTIONS IN SCALA CONT:
+
+ def aFunction(a: String, b: Int): String = 
+   a + " " + b 
+
+Syntax for above functions: 
+1."def" keyword used to define functions. 
+2. "aFunction" name of the function. 
+3. "(a: String, b: Int)" Specifying parameters a and b within parentheses.
+with each parameter having a name and a type. 
+4. ": String =" then return type of a function 
+5. "a + " " + b" The implementation of a function which is a single expression. The space in between the names of the parameters is known as concatenation.
+concatenation is when we append one string to the end of another string using the "+" operator.
+
+
+HOW DO WE CALL A FUNCTION?
+We name the function so for example "println". Then in parentheses we input values "println(aFunction("Hello", 3))"
+We have the name of the function "aFunction" and then in another set of parentheses the values we want to output to the console
+
+
+PARAMETERLESS FUNCTIONS:
+- Parameterless functions can be called with just their names. 
+- For example, def aParameterlessfunction(): Int = 144 
+println(aParameterlessfunction()) OR println(aParameterlessfunction)
+- Important to keep in mind that parameterless functions can be called with just their names.
+
+
+HOW FUNCTIONS THAT REPEAT ARE REPRESENTED IN SCALA (RECURSIVE FUNCTIONS: FUNCTIONS THAT CALL THEMSELVES):
+
+- def aRepeatedFunction(aString: String, n: Int): String = (
+    if (n == 1) aString
+    else aString + aRepeatedFunction(aString, n-1)
+)
+
+Syntax for above recursive function:
+1. "def" Keyword for defining functions in Scala.
+2. "aRepeatedFunction" Name of function.
+3. "(aString: String, n: Int)" Specifying parameters "aString" and "n" and their types.
+4. ": String =" This is the type that will be returned when the function is run.
+5. "(if (n == 1) aString else aString + aRepeatedFunction(aString, n-1))" If n is equal to 1
+    I'm going to return aString. Otherwise I'm going to return aString + aRepeatedFuntion called
+    with the same string and n minus.
+
+-  Main takeaway is that in Scala, we don't use loops. In Scala we use recursive functions.
+
+
+SIDE NOTE: SPECIFYING THE RETURN TYPE OF FUNCTIONS
+
+- In Scala, the compiler can infer the return type by judging the last expression, 
+just as it can infer the type of a var or val without it being specified. However it can't do this with recursive functions.
+- It's best practice to ALWAYS define your return types when writing a function.
+
+RETURN TYPES:
+
+- You can use unit() as a return type. This means that the function will only return side effects.
+- For example, def aFunctionWithSideEffects(aString: String): Unit = println(aString)
+- Println is an function/expression returning unit
+
+WHY WOULD WE NEED FUNCTIONS WITH SIDE EFFECTS?
+
+- We usually have functions with side effects when we're doing something that doesn't involve computation itself.
+- This includes, printing something to the console, logging something, displaying something on screen etc.
+
+
+DEFINING FUNCTIONS WITHIN FUNCTIONS:
+
+- Just like how you can define vars and vals within the code blocks of functions, you can define auxillary functions also.
+- For example:   
+
+def aBigFunction(n: Int): Int = (
+    def aSmallerFunction(a: Int, b: Int): Int = a + b
+  )
+  aSmallerFunction(n, n-1)
+
+- You can use the functions you define inside the code block to determine the return type of function aBigFunction
+-   aSmallerFunction(n, n-1) is the return expression of the implementation of the function aBigFunction.
+
+
+EXERCISES:
+
+1. Write a greeting function. The function takes 2 parameters (name, age) with the name being of type string and the age
+being an Int. --> The output should be "Hi, my name is x and I am y years old."
+
+def aGreetingFunction(name: String, age: Int): String = (
+"Hi, my name is " + name + " and I am " + age +" years old."
+)
+println(aGreetingFunction("Aaron", 27))
+
+2. A factorial function 1 * 2 * 3 * 4 * ... * n (the factorial of n will compute the product of all the integer numbers up to n)
+-  Example: The factorial of 3 (3!) is 3 x 2 x 1 = 6.
+
+  def factorial(n: Int): Int =
+    if ( n <= 0) 1
+    else n * factorial(n - 1)
+
+  println(factorial(5)) // 1 * 2 * 3 * 4 * 5 = 120
+
+  SYNTAX BREAKDOWN:
+
+  1. Keyword def used to define function.
+  2. Function name "factorial".
+  3. Specifying parameters and their types "(n: Int)" n is the name of the parameter, Int is it's type.
+  4. Now we specify the type we want returned "Int".
+  5. We input the implementation details of the function here:
+  if ( n <= 0) 1
+    else n * factorial(n - 1) 
+     Meaning if n is equal to or less than 0, return 1. Otherwise, n (whatever number is designated as n) * n - 1 (the previous number in the sequence)
+
+
