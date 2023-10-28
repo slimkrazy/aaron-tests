@@ -222,6 +222,10 @@ The 10-th Fibonacci number is: 55
 This Scala code demonstrates a straightforward way to implement a Fibonacci function using recursion. However, note that this approach can be inefficient for large values of n due to redundant calculations. There are more efficient techniques, such as memoization or iterative methods, for calculating Fibonacci numbers for large n.
 
 
+WHAT ARE AUXILLARY FUNCTIONS? 
+
+Auxiliary functions are functions that support or assist the main functions or programs. They are used to perform specific tasks that are part of a larger computation or algorithm. Auxiliary functions are typically not the primary focus but are essential for achieving a particular goal. These functions help improve code organization, readability, and reusability. Common examples of auxiliary functions include helper functions, utility functions, and subroutines. When you implement auxillary functions in Scala, you should use curly braces.
+
 MISC:
 
 - Semi colons are not necessary in Scala for expressions that are on their own line unlike C.

@@ -129,7 +129,7 @@ def aBigFunction(n: Int): Int = (
 
 EXERCISES:
 
-1. Write a greeting function. The function takes 2 parameters (name, age) with the name being of type string and the age
+1. Write a GREETING FUNCTION. The function takes 2 parameters (name, age) with the name being of type string and the age
 being an Int. --> The output should be "Hi, my name is x and I am y years old."
 
 def aGreetingFunction(name: String, age: Int): String = (
@@ -137,8 +137,14 @@ def aGreetingFunction(name: String, age: Int): String = (
 )
 println(aGreetingFunction("Aaron", 27))
 
-2. A factorial function 1 * 2 * 3 * 4 * ... * n (the factorial of n will compute the product of all the integer numbers up to n)
+2. A FACTORIAL FUNCTION 1 * 2 * 3 * 4 * ... * n (the factorial of n will compute the product of all the integer numbers up to n)
 -  Example: The factorial of 3 (3!) is 3 x 2 x 1 = 6.
+
+  def factorial(n: Int): Int =
+    if ( n <= 0) 1
+    else n * factorial(n - 1)
+
+  println(factorial(5)) // 1 * 2 * 3 * 4 * 5 = 120
 
   def factorial(n: Int): Int =
     if ( n <= 0) 1
@@ -157,4 +163,30 @@ println(aGreetingFunction("Aaron", 27))
     else n * factorial(n - 1) 
      Meaning if n is equal to or less than 0, return 1. Otherwise, n (whatever number is designated as n) * n - 1 (the previous number in the sequence)
 
+
+3. FIBONACCI FUNCTION:
+   f(1) = 1
+   f(2) = 1
+   f(3) = f(n - 1) + f(n - 2)
+   The fibonacci of n should return the absolute value of the nth fibonacci number.
+
+    def fibonacci(n: Int): Int =
+    if (n <= 2) 1
+    else fibonacci(n - 1) + fibonacci(n - 2)
+
+    println(fibonacci(5)) 
+
+
+4. PRIME FUNCTION: (Write a function that tests if a number is a prime)
+
+   def isPrime(n: Int): Boolean = // curly braces opened because the prime function needs an auxillary function 
+   { 
+     def isPrimeUntil(t: Int): Boolean = // Is n prime until t? Does n have any divisors until the number t?
+     if (t <= 1) true
+     else n % t != 0 && isPrimeUntil(t-1) 
+
+     isPrimeUntil(n / 2)
+      }
+
+      println(isPrime(5))
 
