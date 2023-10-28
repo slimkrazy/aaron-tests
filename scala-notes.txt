@@ -150,3 +150,43 @@ DOWNLOADING SCALA IDE INTELLIJ
 - We need a Scala IDE to debug, compile and format scala code. 
 - Eclipse is no longer available with a scala plugin so we use Intellij.
 - VScode is also an IDE.
+
+
+OBJECT ORIENTATED AND FUNCTIONAL PROGRAMMING 
+
+- Whats the difference? (chat gpt answer)
+
+- Functional programming and object oriented programming are two different paradigms/programming models in software engineering.
+
+- The key differences are as follows:
+
+1. PROGRAMMING STYLE:
+-  With object orientated programming OOP the use of objects, which are instances of classes is used to structure the code and represent real world entities.
+Objects are significant because they encapsulate data and behaviour on real life entities, like people.
+- Functional programming on the other hand focuses on writing programs by composing pure functions, emphasising immutability and avoiding shared STATE.
+
+2. DATA HANDLING:
+- In functional programming data is immutable meaning that it can't change after it's created.
+functions created in functional programming operate on immutable data and produce new data as output.
+- In contrast when it comes to data handling in OOP, objects encapsulate both data (attributes or properties) and
+behaviour (methods or functions). Crucially unlike functions, objets can modify their internal states allowing for mutable data.
+- In summary as int pertains to data handling, functional programming works on immutable data meaning it cannot be changed once created.
+The functions created operate on immutable data and produce new data as output. Whereas OOP works with mutable data as objects can change their data 
+even after created (attributes properties)
+
+3. CONTROL FLOW:
+- Functional programming relies heavily on recursion and higher order functions.
+Higher order functions allow functions to take other functions as parameters or return functions as results.
+- OOP typically utilises an imperative style, where control flow is managed via loops, conditionals and method calls.
+
+4. INHERITANCE AND POLYMORPHISM:
+- OOP supports concepts of inheritance and polymorhism. What is inheritance?? Inheritance allows classes to inherit properties and methods from parent classes
+while polymorphism allows objects to be treated as instances of DIFFERENT classes as long as they share a common interface.
+- In contrast functional programming typically does not use inheritance or polymorphism as functional programming favours composition of functions and data immutability.
+
+5. STATE MANAGEMENT:
+- In funcitonal programming, state management is done through once again pure functions and immutable data which means it avoids a shared mutable state and the need for locks and sychronisation techniques.
+- OOP allows for mutable state, as objects are made up of mutable data that can change after it's created. This means taht state management can be more complexed than with
+functional programming. This means that techniques such as encapsulation and access control are used in OOP state management.
+
+
