@@ -177,6 +177,7 @@ println(aGreetingFunction("Aaron", 27))
     println(fibonacci(5)) 
 
 
+
 4. PRIME FUNCTION: (Write a function that tests if a number is a prime)
 
    def isPrime(n: Int): Boolean = // curly braces opened because the prime function needs an auxillary function 
