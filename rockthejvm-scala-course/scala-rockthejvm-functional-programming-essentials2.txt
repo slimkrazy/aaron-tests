@@ -159,7 +159,6 @@ This is because variables are mutable. When you change a var it is known as a si
 INSTRUCTIONS VS EXPRESSIONS (WHATS THE DIFFERENCE?)
 
 - An instruction is something that you tell the computer to do. Examples would be change a var (+=), print to the console (println(x)) 
-
 - An expression is something that has a value and or a type. You're asing the machine to give you the value of something. 
 - In functional programming languages like Scala, we think in terms of expressions meaning all our code will compute a value.
 - An example of this would be the if expression in Scala:
