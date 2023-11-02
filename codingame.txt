@@ -1,0 +1,24 @@
+                                   CODINGAME NOTES
+                                
+SCALA CONDITIONAL STATEMENTS:
+
+REMEMBER:
+- An instruction is something that you tell the computer to do. Examples would be change a var (+=), print to the console (println(x)) 
+- An expression is something that has a value and or a type. You're asing the machine to give you the value of something. 
+- In functional programming languages like Scala, we think in terms of expressions meaning all our code will compute a value.
+- An example of this would be the if expression in Scala:
+  val aCondition = true 
+  val aConditionedValue = if(aCondition) 5 else 3
+  println(aConditionedValue)
+- The code above is saying that the aConditionedValue is either 5 if the aCondition is true or 3 if it's false.
+- Crucially, the if expression if(aCondition) 5 else 3 actually outputs a value (5 or 3).
+- The "ifs" in scala are EXPRESSIONS not INSTRUCTIONS.
+Tutorial game: Shoot enemy ships before they reach you.
+
+INSTRUCTIONAL OR EXPRESSION?
+
+if (dist1 < dist2) {
+    println(enemy1)
+} else {
+    println(enemy2)
+}

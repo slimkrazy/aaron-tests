@@ -226,7 +226,84 @@ WHAT ARE AUXILLARY FUNCTIONS?
 
 Auxiliary functions are functions that support or assist the main functions or programs. They are used to perform specific tasks that are part of a larger computation or algorithm. Auxiliary functions are typically not the primary focus but are essential for achieving a particular goal. These functions help improve code organization, readability, and reusability. Common examples of auxiliary functions include helper functions, utility functions, and subroutines. When you implement auxillary functions in Scala, you should use curly braces.
 
-MISC:
+
+RECURSION: 
+
+- Recursion in computer programming is a programming technique where a function calls itself in order to solve a problem. It's a powerful and elegant way to solve complex problems by breaking them down into smaller, more manageable subproblems. The key idea in recursion is to define a problem in terms of one or more simpler instances of the same problem.
+
+Recursion typically involves two main components:
+
+1. Base Case: A condition that defines the simplest or smallest possible instance of the problem. When the base case is met, the recursion stops, and a result is returned.
+
+2. Recursive Case: This is where the function calls itself with a modified or reduced version of the original problem. Each recursive call should move closer to the base case.
+
+- Here’s an example in Scala that calculates the factorial of a number using recursion:
+
+def factorial(n: Int): Int = {
+  if (n == 0) {
+    1  // Base case: factorial of 0 is 1
+  } else {
+    n * factorial(n - 1)  // Recursive case
+  }
+}
+
+// Example usage:
+val result = factorial(5)
+println(s"Factorial of 5 is $result")  // Output: Factorial of 5 is 120
+
+In this Scala code, the factorial function calculates the factorial of a non-negative integer n. The base case is when n is 0, and the function returns 1. In the recursive case, it multiplies n by the result of the factorial function called with n - 1. This recursion continues until the base case is reached, and the final result is calculated.
+
+
+TAIL RECURSION:
+
+- Tail recursion is a specific form of recursion in computer programming where the    recursive call is the last operation in a function. In other words, in a tail-recursive function, the result of the recursive call is immediately returned, and there are no pending operations after the recursive call.
+
+Key characteristics of tail recursion:
+
+1. The recursive call is the last operation in the function.
+2. There are no pending calculations or operations after the recursive call.
+3. The result of the recursive call is typically passed directly as the return value of the function.
+
+The main difference between tail recursion and other forms of recursion (non-tail recursion) is how they handle the call stack. In a tail-recursive function, because there are no pending operations after the recursive call, the compiler or interpreter can optimize the code to reuse the current function's stack frame for the next recursive call. This is known as "tail call optimization" or "tail call elimination." It helps prevent stack overflow errors in cases of deep recursion.
+
+In contrast, non-tail recursive functions have pending operations after the recursive call, which means each recursive call adds a new stack frame to the call stack, potentially leading to a stack overflow for deep recursion.
+
+Tail recursion is a more efficient form of recursion in languages or environments that support tail call optimization, as it avoids unnecessary stack space consumption. However, not all programming languages and environments automatically perform this optimization, so it's essential to be aware of the capabilities of your chosen language or platform.
+
+EXAMPLE OF TAIL RECURSION IN SCALA:
+
+def anotherFactorial(n: Int): Int = {
+  @tailrec // used for when you want to check that your function is tail recursive. If it's not, the compiler will produce an error.
+    def factHelper(x: Int, accumulator: BigInt): BigInt =
+      if (x <= 1) accumulator
+      else factHelper(x - 1, x * accumulator)
+
+      factHelper(n, 1)
+}
+
+
+// ACCUMULATORS
+
+- An accumulator is a simple value that collects data from an iterative process. In the case of factorial function for example, the accumulator collects all the multiplications as the program.
+
+// DATA STRUCTURES
+
+- CALL STACKS
+
+A call stack is a data structure which has the job of keeping track of the execution of a program. It manages function calls, keeping track of where the program's execution should RETURN after each function call is completed.
+
+
+- STACK FRAMES
+
+A stack frame is a frame of data that gets pushed onto the call stack. In a call stack, a stack frame would be a function call and it's argument data.
+
+
+- STACK OVERFLOWS
+
+A stack overflow is a type of buffer overflow error that occurs when a computer program tries to use more memory space in the call stack than has been allocated to that stack. Stack overflows happen when the recursive depth is too big.
+
+// MISC
 
 - Semi colons are not necessary in Scala for expressions that are on their own line unlike C.
-- Semi colons ARE necessary if you write multiple expressions on the same line but this is bad style. They would be mandatory where you have multiple expressions on the same line becuase they separate the expressions.
+- Semi colons ARE necessary if you write multiple expressions on the same line but this is bad style. They would be mandatory where you have multiple expressions on the same line becase they separate the expressions.
+
