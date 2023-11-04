@@ -31,6 +31,8 @@ INTEGERS:
 - There are also other integer numerical values that are called shorts and longs.
 For example, val aShort: Short = 1234, val aLong: Long = 12345678910 however, if it's too long Scala will complain so when we want Scala to recognise that the value of the Int is a long number we have a capital 'L' at the end of the long Int.
 
+- For very large numbers we use BigInt. This is for when we need to get very large numbers precisely that types like Long will not be able to produce without causing stack overflows.
+
 
 FLOATS:
 
