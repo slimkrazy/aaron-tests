@@ -1,0 +1,32 @@
+                           DEFAULT AND NAMED ARGUMENTS 
+
+// Beginning with tail recursion to exemplify the concept:
+
+  def trFact(n: Int, acc: Int = 1): Int = {
+
+    if (n <= 1) acc
+    else trFact(n-1, n*acc)
+
+    val fact10 = trFact(10, 2)
+
+  }
+
+   - Here we have a tail recursive factorial for the valie of 10 with the accumulator set to 
+   2 * the factorial of 10. 
+
+   - The default value of 2 has priority over the acc: Int = 1 specified in the definition.
+   - We have passed a default value the "2" in trFact(10, 2) as an argument (the actual values passed into the function when it is called)
+
+   - If 99% of time we call a function with the same parameters, you can just specify a default value for an argument in the definition of the 
+   function itself.
+
+   - We can also name our parameters:
+
+   def greet(name: String = "Superman" age: Int = 10): String =
+   "Hi, I'm $name and I'm $age years old."
+
+   greet(age = 5)
+
+   - Here we have called the greet function with age = 5 and the Scala compiler will infer the leading arguments for name = Superman.
+
+   - We can also name all the parameters here and pass them in a different order.
