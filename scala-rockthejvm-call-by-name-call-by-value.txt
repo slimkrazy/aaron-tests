@@ -1,0 +1,94 @@
+                             CALL BY NAME, CALL BY VALUE
+
+
+CALLING FUNCTIONS BY NAME OR BY VALUE?
+
+- EXAMPLES:
+
+  def calledByValue(x: Long): Unit = {
+    println("by value: " + x)
+    println("by value: " + x)
+  }
+
+  def calledByName(x: => Long): Unit = {
+    println("by name: " + x)
+    println("by name: " + x)
+  }
+   calledByValue(System.nanoTime())
+   calledByName(System.nanoTime())
+
+  - Here although the functions are defined differently, the implementation is identical.
+  - the "=>" in the calledByName function, tells the Scala compiler that the parameter will be called by name.
+
+  WHAT HAPPENS WHEN WE RUN THE ABOVE FUNCTIONS?
+
+  - We would expect one value to be printed twice and then another value to be printed twice.
+  - The calledByName funciton will display a different number to the calledByValue function.
+
+  - Executing the program produces these results:
+
+by value: 1351673758728166
+by value: 1351673758728166
+by value: 1351673800406791
+by value: 1351673800429750
+
+  - The first two pertaining to the calledByValue function are identical. 
+  - The second two values pertaining to the calledByName function are disparate.
+
+  SYNTAX BREAKDOWN:
+
+  - We specify the parameters to be type "Long" because the time functions in Scala and on
+  the JVM always return longs. 
+
+  - In the calledByValue function, the exact value of this expression "calledByValue(System.nanoTime())" is computed before the function
+  evaluates it. The same function "calledByValue" is used in the function definition.
+  - So the computer evaluates systemNanoTime, and then uses the value from that expression "1351673758728166" throughout the entire function definition.
+  - The "x" in  println("by value: " + x) is 1351673758728166.
+  - So ultimately this is what sallBy Value does, it evaluates the value produced by the last expression and then uses that value as the number specified
+  throughout the function definition.
+
+  - In contrast, in the calledByName function, the expression calledByName(System.nanoTime()) is evaluated/passed literally as is. and the expression 
+  is evaluated every time. So the "x" in println("by name: " + x) is System.nanoTime() throughout the entirety of the function definition.
+  - This is why the calledByName function produces two different values because it is being evaluated by the compiler two different times meaning literally 
+  two different time values will be produced as a result.
+  - The "=>" in the implementation for the calledByName function is crucial to understanding the 
+  disparate returned values. It delays the evaluation of the expression passed as a parameter "(System.nanoTime())"
+  and is used literally everytime it's used in the function definition.
+  - The "=>" is useful in lazy streams and things that might fail.
+
+
+  byName concept cont: INFINITE RECURSIVE FUNCTION
+
+    def infinite(): Int = 1 + infinite()
+    def printFirst(x: Int, y: => Int) = println(x)
+     printFirst(infinite(), 34)
+  - Here infinite returns an Int and the number 34.
+  - When we run "printFirst(infinite(), 34)" this causes a stack overflow.
+  - When we reverse it and run printFirst(34, infinite()) instead it prints 34. WHY?
+
+  - This is because the callbyname parameter => delays the evaluation of the expression passed here "infinite()" (expression being referred to)
+  printFirst(34, infinite()) until that expression is used. As parameter "y" is not used, since the return type of printFirst is "println(x)" 
+  infinite() is never evaluated. 
+
+
+  CRUCIAL TAKEAWAYS:
+
+  - CALL BY VALUE: example - def myFunction(x: Int): String = 
+    val y = myFunction(2)
+
+  -  This is the type of function we've been using. If we have a function with a call by value parameter, the value passed to the function
+  is actually used inside the function definition itself so x would be 2.
+  - The value is COMPUTED BEFORE THE FUNCTION CALL.
+  - The same valu is used in the function implementation no matter how many times the function is called.
+
+  - CALL BY NAME: example - def myFunction(x: => Int): String = 
+    val y = myFunction(2)
+
+  - When we use a call by name function, in contrast to call by value, the parameter that is passed to the function is not a value but an expression 
+  itself.
+  - The expression is literally passed into the function.
+  - The expression is evaluated at every use within the function (think of the nanotime example)
+
+
+
+
