@@ -10,3 +10,34 @@
 2023.10.31 20:10:17 WARN  no build target for: /Users/aaron.boakye/Documents/workspace/aaron-tests/rockthejvm-scala-course/udemy-scala-beginners/udemy-scala-beginners/src/main/scala/lectures/part1basics/Recursion.scala
 2023.10.31 20:10:19 INFO  time: code lens generation in 1.98s
 2023.10.31 20:10:19 INFO  time: code lens generation in 2.23s
+2023.11.04 22:05:57 INFO  Started: Metals version 1.1.0 in folders '/Users/aaron.boakye/Documents/workspace/aaron-tests' for client Visual Studio Code 1.79.2.
+2023.11.04 22:06:01 WARN  Build server is not auto-connectable.
+2023.11.04 22:06:10 INFO  running '/Users/aaron.boakye/Library/Caches/Coursier/arc/https/github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.20%252B8/OpenJDK11U-jdk_aarch64_mac_hotspot_11.0.20_8.tar.gz/jdk-11.0.20+8/Contents/Home/bin/java -Djline.terminal=jline.UnsupportedTerminal -Dsbt.log.noformat=true -Dfile.encoding=UTF-8 -jar /var/folders/h0/_dhbx_196rj51bk5r2lf6v8r0000gp/T/metals4597598155838772921/sbt-launch.jar -Dbloop.export-jar-classifiers=sources bloopInstall'
+2023.11.04 22:06:10 INFO  [info] welcome to sbt 1.9.6 (Eclipse Adoptium Java 11.0.20)
+2023.11.04 22:06:13 INFO  [info] loading global plugins from /Users/aaron.boakye/.sbt/1.0/plugins
+2023.11.04 22:06:14 INFO  [info] loading settings for project scala-test-build-build from metals.sbt ...
+2023.11.04 22:06:14 INFO  [info] loading project definition from /Users/aaron.boakye/Documents/workspace/aaron-tests/scala-test/project/project
+2023.11.04 22:06:15 INFO  [info] loading settings for project scala-test-build from metals.sbt ...
+2023.11.04 22:06:15 INFO  [info] loading project definition from /Users/aaron.boakye/Documents/workspace/aaron-tests/scala-test/project
+2023.11.04 22:06:15 INFO  [success] Generated .bloop/scala-test-build.json
+2023.11.04 22:06:15 INFO  [success] Total time: 1 s, completed 4 Nov 2023, 22:06:16
+2023.11.04 22:06:16 INFO  [info] loading settings for project root from build.sbt ...
+2023.11.04 22:06:16 INFO  [info] set current project to scala-test (in build file:/Users/aaron.boakye/Documents/workspace/aaron-tests/scala-test/)
+2023.11.04 22:06:16 INFO  [success] Generated .bloop/root-test.json
+2023.11.04 22:06:16 INFO  [success] Generated .bloop/root.json
+2023.11.04 22:06:16 INFO  [success] Total time: 0 s, completed 4 Nov 2023, 22:06:17
+2023.11.04 22:06:17 INFO  time: ran 'sbt bloopInstall' in 7.16s
+2023.11.04 22:06:17 INFO  Attempting to connect to the build server...
+2023.11.04 22:06:17 INFO  Bloop uses /Users/aaron.boakye/Library/Caches/Coursier/arc/https/github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.20%252B8/OpenJDK11U-jdk_aarch64_mac_hotspot_11.0.20_8.tar.gz/jdk-11.0.20+8/Contents/Home defined at /Users/aaron.boakye/.bloop/bloop.json
+2023.11.04 22:06:17 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /Users/aaron.boakye/Documents/workspace/aaron-tests/.metals/bsp.trace.json or /Users/aaron.boakye/Library/Caches/org.scalameta.metals/bsp.trace.json
+2023.11.04 22:06:17 INFO  time: Connected to build server in 0.31s
+2023.11.04 22:06:17 INFO  Connected to Build server: Bloop v1.5.8
+2023.11.04 22:06:19 INFO  time: indexed workspace in 1.78s
+2023.11.04 22:06:35 INFO  Disconnecting from Bloop session...
+2023.11.04 22:06:35 INFO  Shut down connection with build server.
+2023.11.04 22:06:35 INFO  Attempting to connect to the build server...
+2023.11.04 22:06:35 INFO  Bloop uses /Users/aaron.boakye/Library/Caches/Coursier/arc/https/github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.20%252B8/OpenJDK11U-jdk_aarch64_mac_hotspot_11.0.20_8.tar.gz/jdk-11.0.20+8/Contents/Home defined at /Users/aaron.boakye/.bloop/bloop.json
+2023.11.04 22:06:38 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /Users/aaron.boakye/Documents/workspace/aaron-tests/.metals/bsp.trace.json or /Users/aaron.boakye/Library/Caches/org.scalameta.metals/bsp.trace.json
+2023.11.04 22:06:38 INFO  time: Connected to build server in 2.82s
+2023.11.04 22:06:38 INFO  Connected to Build server: Bloop v1.5.11
+2023.11.04 22:06:38 INFO  time: indexed workspace in 0.72s
