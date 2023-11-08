@@ -1,2 +1,158 @@
                                  SMART OPS ON STRINGS
     
+
+
+SPECIFYING THE CHARACTER WE WANT TO PRINT WITHIN A STRING:
+
+val str: String = "Hello, I am learning Scala." 
+
+  println(str.charAt(2))
+    
+    
+    SYNTAX BREAKDOWN:
+    
+    1. We've declared a valu named it "str" of type String.
+    2. We've given this val the value of "Hello, I am learning Scala."
+    3. We've printed the val but specifically the second character of the string as it starts
+       with 0.
+    4. The . in "(str.charAt(2)) is what is known as a method call.
+    - Look up what a method call is. charAtx returns the character at that index.
+
+
+SUBSTRINGS:
+
+val strr: String = "Master Engineer"
+
+println(str.substring(3, 7))
+
+Substrings can take 1 or 2 indices. For example in this case, "Master Engineer" 
+when executing println(str.substring(3, 7)) will print "ter" because it prints character 3
+inclusive up to character 7 EXCLUSIVE.
+
+
+SPLIT:
+
+val strrr: String = "Depop Back-End Engineer"
+
+Println(strrr.split(" ").toList)
+
+A split operation in String will split a string into multiple pieces depending on the amount of
+delimiters in the string. Split returns an array of all the substrings, which in this example:
+"Depop Back-End Engineer" are the words separated by spaces.
+
+This is what the output looks like in the console: List(Depop, Back, End, Engineer)
+
+
+TESTS FOR STRINGS:
+
+val stringg: String = "I am learning Scala for work"
+
+println(stringg.startsWith("Hi"))
+
+This operation will return a boolean expression in the console.
+In this case it will return false because the string starts with I.
+
+
+REPLACEMENT FUNCTIONS:
+
+1. replace
+
+val strang: String = "I'm enjoying Scala"
+
+println(strang.replace("a", "e"))
+
+Does what it says on the tin, replaces the first specified character "a" with 
+the last "e"
+
+2. toLowerCase
+
+val strang: String = "I'm enjoying Scala"
+
+println(strang.toLowerCase("a", "A"))
+
+Does what it says on the tin, replaces all upper-case characters with lowercase 
+
+3. length
+
+val strang: String = "I'm enjoying Scala"
+
+println(strang.length)
+
+Gives you the number of characters the string is comprised of.
+
+
+- These are all Java functions that are available in Scala because Scala runs on the jvm 
+Java Virtual Machine
+
+
+SCALA SPECIFIC STRING FUNCTIONS:
+
+1. Changing a number to an Int
+
+val aNumberString = "45"
+
+val aNumber = aNumberString.toInt
+
+This does what it says on the tin, changing any type of number to an int.
+
+
+2. Concatenation, prepending and appending strings.
+
+val aNumberString = "45"
+
+println('a' +: aNumberString)
+
+This will "prepend" the character "a" to the number 45, outputting to the console
+"a45"
+
+println( aNumberString :+ 'a'  )
+This is the symmetrical operation appending which should result in 45a
+
+The following is a function with both prepending and appending characters
+println( 'a' +: aNumberString :+ 'a'  )
+resulting in "a45a"
+
+
+3. Reverse
+
+val strang: String = "Rock the jvm Scala"
+println(strang.reverse) 
+
+output: alacS mvj eht kcoR
+
+
+4. List functions
+
+val strang: String = "Rock the jvm Scala"
+println(strang.take(2)) 
+This will take the first two characters out of a string.
+
+output: Ro 
+
+
+SCALA SPECIFIC: STRING INTERPOLATORS
+
+Interpolator: An Interpolatoris a function or algorithm used to calculate 
+intermediate values between two keyframes or key points.
+
+S - Interpolators:
+
+Normal greeting function: def aGreetingFunction(name: String, age: Int): String =
+"Hi my name is "+ name +" and I'm "+ age +" years old"
+
+println(aGreetingFunction("Aaron", 28))
+
+Variation of the implementation for greeting function (My name is Aaron and I'm 28 years old)
+
+val name = "Aaron"
+val age = 28
+val greeting = s"Hello, my name is $name and I am $age years old."
+
+  println(greeting)
+
+The "s" interpolator injects the  declared values into the greeting string.
+An easier more efficent way of writing the function than the former.
+
+
+
+
