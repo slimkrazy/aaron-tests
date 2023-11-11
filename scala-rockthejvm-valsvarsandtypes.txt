@@ -1,0 +1,85 @@
+                          VALUES, VARIABLES AND TYPES OVERVIEW
+
+SCALA SYNTAX:
+
+- The syntax in scala to create a val is: 
+val x: Int = 10
+- Here we have declared the value nameing it x.
+- We have then declared it's type which is an Int.
+- Finally we have given it the value of 10.
+
+- To print 10 to the console we use the println() function.
+so it would be println(x)
+
+
+VAL IMMUTABILITY:
+
+- What we declare when we create a val cannot be reassigned.
+- it we declared val x: Int = 10 and then we want to print to console we do:
+println(x)
+
+x = 14
+- The Scala compiler will complain because we have already assigned the value x with the 
+value 10. Values/vals are immutable in Scala.
+
+
+TYPE INFERENCE:
+
+- Declaring the type (val x: "Int" = 10) is optional in Scala.
+- This is because the Scala compiler can infer the type of the val by reading from the right hand side.
+- This means that the type of val is inferred by whatever value is assigned to the val.
+
+*SCALA STYLE POINT:
+
+- Each expression must have it's own line. For example:
+val x: Int = 10
+val aString: String = "Hello"
+
+
+TYPES IN SCALA:
+
+  val aBooleam: Boolean = false
+
+  val aChar: Char = 'a' (single character in between single quotes)
+
+  val anInt: Int = x 
+
+  val aShort: Short = 1234 (only 4 bytes represented)
+
+  val aLong: Long = 12345678 (8 bytes instead of 4)
+
+  val aFloat: Float = 1.5f (decimal values. f marks to the compiler that this is a float)
+
+  val aDouble: Double = 22.55 
+
+  val aString: String = "Hello"
+
+
+VARIABLES/VAR IN SCALA
+
+- var aVar: Int = 7
+
+- We create variables the same way we do values. 
+- The difference between the two is that variables can be reassigned.
+
+so var aVariable: Int = 7
+
+println(aVariable)
+
+aVariable = 2
+
+This results in 2 being printed to the console rather than 7.
+
+- Variables are mutable, values are immutable in Scala.
+
+
+VARIABLES AND SIDE EFFECTS:
+
+- Variables are used in Scala for what are known as side effects.
+-  A side effect is any modification of state that is 
+observable outside the function being executed. An example would be changing a variable,
+printing to the console, showing something on screen etc. 
+- We can't eliminate side effects altogether because we need our code to effect the world in someway,
+but we want to push them to the outer limits of
+our business code. This is because pure functions are easier to understand, they don't change regardless
+of what's happening outside of the function.
