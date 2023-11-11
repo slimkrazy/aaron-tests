@@ -135,7 +135,7 @@ SCALA SPECIFIC: STRING INTERPOLATORS
 Interpolator: An Interpolatoris a function or algorithm used to calculate 
 intermediate values between two keyframes or key points.
 
-S - Interpolators:
+S - INTERPOLATORS
 
 Normal greeting function: def aGreetingFunction(name: String, age: Int): String =
 "Hi my name is "+ name +" and I'm "+ age +" years old"
@@ -150,8 +150,59 @@ val greeting = s"Hello, my name is $name and I am $age years old."
 
   println(greeting)
 
-The "s" interpolator injects the  declared values into the greeting string.
+- The "s" interpolator injects the  declared values into the greeting string.
 An easier more efficent way of writing the function than the former.
+- Without the s before the string, it will be taken literally and printed as is.
+
+
+F - INTERPOLATORS
+
+f interpolators act as s interpolators with the added benefit that they can receive 
+"printf like formats"
+
+Example: Aaron can eat 5.4 chickens per minute written as an f interpolated myth:
+
+  val speed = 5.4f
+  val myth = f"$name can eat $speed%2.2f chickens per minute."
+
+  println(myth)
+
+  output: Aaron can eat 5.40 chickens per minute.
+
+  BREAKDOWN OF THE F INTERPOLATOR:
+
+  - F interpolators are for formatted strings in a printf like fashion 
+  (printf: printf is a function in the C programming language 
+  (and other programming languages that provide a similar function) 
+  used for formatted output. It allows you to specify a format string that describes 
+  how the data should be formatted when it's printed to the console or a file)
+
+  - val speed = 5.4f
+  val myth = f"$name%s can eat $speed%2.2f chickens per minute." 
+  1. Here the f interpolated string starts with an f before the quotes which signals to the 
+  compiler that some values may be passed into the string.
+  2. The "$" here signifies to the compiler that the string will be expanded.
+  3. The "%s" is a string fromat from the printf standard
+  4. The "%5.4f" is for the decimal representation with at least 2 characters and 2 precision
+     decimals
+
+
+ RAW - INTERPOLATOR:
+
+ Raw interpolator operates like the s interpolator but it has a property that allows it to 
+ print characters literally.
+
+ Example: println(raw"this is a \n newline")
+ 
+ - Here the "\n" will typically cause the string to be printed as 2 lines.
+ - However because of the "raw" raw interpolator at the start, the string is printed literally.
+ 
+ - When we define a value that has as it's value "this is a \n newline" 
+ val escaped = "this is a \n newline"
+ and we try to print it using: println(raw"$escaped") the function will call the value which will output 2 lines.
+
+ - So the raw interpolated strings ignores escaped characters inside raw characters in the string.
+ - Otherwise the variables passed into the string when we declare values do get escaped.
 
 
 
