@@ -83,3 +83,4 @@ printing to the console, showing something on screen etc.
 but we want to push them to the outer limits of
 our business code. This is because pure functions are easier to understand, they don't change regardless
 of what's happening outside of the function.
+- Whenever we change a variable/var, this is a side effect.

@@ -1,0 +1,156 @@
+                               SCALA EXPRESSIONS OVERVIEW
+
+
+- Example of an expression: 
+
+val x: Int = 1 + 2
+
+
+1 + 2 is the expression. 
+
+- We have declared a value naming it x of type Int and given evaluated it to 
+1 + 2 which is 3.
+
+
+MOST BASIC EXPRESSIONS ARE MATHS EXPRESSIONS:
+
+- So if we println(x) it will print 3
+- if we println(3 + 4 * 9) it will print 39
+- This is because it will print in the order of BODMAS
+- These are mathematical expressions
+
+- Another example of a maths expression
+
+val sum = 5 + 3
+println(s"The sum of 5 and 3 is: $sum")
+
+- 5 + 3 is the expression, which is evaluating the sum of 5 and 3.
+- The result is assigned to the value sum.
+- The println statement then prints the result: "The sum of 5 and 3 is: 8".
+- This demonstrates a basic arithmetic expression in Scala. 
+- The s"..." syntax is used for string interpolation, 
+allowing you to embed the value of sum directly into the string for display.
+
+
+RELATIONAL EXPRESSIONS IN SCALA
+
+- Example of a relational expression:
+x == 1
+
+- "x == 1" relational expression tests the equality between x and 1
+- it's a relational expression that evaluates to a boolean. 
+- So "==" is a relational operation that tests for equality and "x == 1" is a relational expression
+that evaluates to a boolean. It's asking does x equate to 1?
+
+Another example of a relational expression 
+val x = 5
+val y = 10
+x != y
+ 
+- This asks the compiler to test if 5 is not equal to 10.
+- '!' just means "not".
+
+
+BOOLEAN OPERATORS FOR LOGIC:
+
+- println(!(1 == x))
+- Logical Negation (!): Flips the truth value of a boolean expression. So if 
+1 == x is true, then it will print false.
+
+- val isTrue = true
+val isFalse = !isTrue // isFalse is now false
+
+
+ADDITION UNARY OPERATOR:
+
+Unary Plus (+): Represents the identity operation. 
+It doesn't change the sign of the operand.
+
+-   var aVariable = 2
+  aVariable += 3 // also works with -= *= and /=......side effects
+  println(aVariable) will print 5
+
+- The same principle of impacting the output of var expressions by 
+prepending them with unary operators applies with other operators like -= *= and /=.
+
+
+THE DIFFERENCE BETWEEN INSTRUCTIONS AND EXPRESSIONS:
+
+- Remember, an instruction is something we tell the computer to do whereas an expressions is 
+something that has a value and or a type.
+
+- In imperative languages like Java and Python, we're always telling the computer what to do
+print this to the console, send this to the server etc.
+
+- In Scala and in functional languages generally we must think in terms of expressions. Meaning
+all out code will return a value.
+
+- INSTRUCTIONS ARE EXECUTED WHEREAS EXPRESSIONS ARE EVALUATED, BECAUSE THEY PRODUCE A VALUE.
+
+EXAMPLE if expression:
+
+val aCondition = true
+val aConditionedValue = if(aCondition) 5 else 3
+println(aConditionedValue)
+(5 printed to the console)
+
+SYNTAX BREAKDOWN:
+- val aConditionedValue = if(aCondition) 5 else 3 // aConditionedValue is either 5 if aCondition is true
+otherwise it's 3.
+- The if expression will test to see if whatever var/val it is linked to is true. If it is, then the proceeeding
+value will be printed to the console, if it is false, then the "else" part of the code block will be printed 
+instead.
+- The if expression here evaluates to 5 and so we can see how even if expressions can output value.
+
+
+ANOTHER IF EXPRESSION EXAMPLE:
+
+  val aConditional = true
+  val result = if(aConditional) "I know this."
+  else "You're confused..."
+
+    println(result) // I know this. printed to console.
+
+- The val result is evaluated to the value of the if expression. As aConditional is true, I know this is the value 
+assigned to result and printed to the console.
+
+- The val result can only be assigned the value of the if expression because it RETURNS A VALUE. 
+
+
+REMEMBER EVERYTHING IN SCALA IS AN EXPRESSION (except for definitions)
+
+LAST IF EXPRESSION EXAMPLE USING INTS
+
+val x = 10
+
+if (x > 5) {
+  println("x is greater than 5")
+} else {
+  println("x is not greater than 5")
+}
+
+SYNTAX BREAKDOWN:
+
+- The value of x is equal to 10
+- if it's true that x is greater than 5
+- code block opened for piece of code that will be executed if condition is true
+- print x is greater than 5 to the console close bracket
+- otherwise, open bracket for piece of code that will be executed if x is not greater than 5
+- print x is not greater than 5 to the console
+
+CODE BLOCKS ARE ALSO EXPRESSIONS:
+
+- Code blocks in Scala are expressions.
+- Because all expressions produce a value, the value of the code block expression is the value of the 
+last expression within the block.
+
+
+- println("hello, world") is an expression returning unit.
+
+
+
+
+
+
+
+
