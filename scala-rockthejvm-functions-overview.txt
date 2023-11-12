@@ -1,0 +1,109 @@
+                            SCALA FUNCTIONS OVERVIEW/RECAP
+
+
+DEF FUNCTION:
+
+- A function is a reusable block of code that takes one or more input parameters 
+performs a computation, and returns a result. 
+
+
+SCALA FUNCTION SYNTAX 
+
+  def functionName(parameter1: Type1, parameter2: Type2, ...): ReturnType = {
+  // Function body
+  // Code that performs the computation
+  // Result is typically the value of the last expression in the block
+}
+
+
+EXAMPLE: ADDITION FUNCTION 
+
+  def add(x: Int, y: Int): Int = {
+  x + y
+}
+
+val result = add(3, 5)
+println(result) // Output: 8
+
+
+EXAMPLE: STRING CONCATENATION FUNCTION
+
+   def aFunction(a: String, b: Int): String = {
+    a + " " + b
+  }
+  
+  println(aFunction("Yo!", 5))
+  Output: Yo! 5
+
+  REMEMBER a block is also an expression and it's result is the last 
+  value of it's constituent expression.
+
+
+EXAMPLE: RECURSIVE FACTORIAL FUNCTION
+
+  def factorial(n: Int): Int = {
+  if (n <= 0) 1
+  else n * factorial(n - 1)
+}
+
+SYNTAX BREAKDOWN:
+
+1. Function Definition:
+
+def factorial(n: Int): Int = { ... }
+- def keyword indicates the start of a function definition.
+  factorial is the name of the function.
+- (n: Int) declares a parameter named n of type Int.
+  :Int specifies that the function returns an Int.
+
+2. Base Case:
+
+if (n <= 0) 1
+This is the base case of the recursion. If n is less than or equal to 0, 
+the function returns 1. This prevents the recursion from going infinitely 
+and provides a termination condition.
+
+3. Recursive Case:
+
+else n * factorial(n - 1)
+In the recursive case, when n is greater than 0, 
+the function multiplies n by the result of 
+a recursive call to factorial with the argument n - 1.
+This recursive call represents a smaller instance of the same problem 
+(calculating the factorial of a smaller number).
+
+4. Function Call:
+
+When you call the function, for example: factorial(5)
+The function calculates 5 * factorial(4).
+Then, 4 * factorial(3).
+Continuing this process until it reaches the base case.
+Finally, it multiplies the results backward to get the overall factorial.
+
+
+AUXILLARY FUNCTIONS:
+
+In Scala, auxiliary functions (often referred to as auxiliary or helper functions) are functions that 
+assist in the computation of a primary function. They are typically defined within 
+the scope of the primary function and are used to 
+break down the computation into smaller, more manageable parts.
+
+Auxiliary functions help improve code organization, readability, and maintainability by 
+encapsulating specific subtasks within a larger computation. They are often recursive and serve to express 
+the logic of the primary function in a more modular and understandable manner.
+
+EXAMPLE:
+
+def factorial(n: Int): Int = {
+  // Auxiliary function for recursive computation
+  def factorialHelper(acc: Int, remaining: Int): Int = {
+    if (remaining <= 0) acc
+    else factorialHelper(acc * remaining, remaining - 1)
+  }
+
+  // Initial call to the auxiliary function
+  factorialHelper(1, n)
+}
+
+- We can define auxillary things within code blocks like declaring vals, vars,
+defining functions etc.
