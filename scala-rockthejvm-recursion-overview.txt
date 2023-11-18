@@ -1,0 +1,24 @@
+                               SCALA RECURSION OVERVIEW
+
+
+RECURSIVE FACTORIAL FUNCTIONS: 
+
+- def factorial(n: Int): Int =
+   if (n <= 0) 1 else
+   n * factorial(n - 1)
+
+
+CALL STACKS:
+
+- A call stack is a data structure that keeps track 
+of the execution of a program. It works in a last-in, first-out (LIFO) manner, meaning 
+that the last function call made is the first one to be resolved. When a function is called, 
+a new frame is added to the top of the call stack, and when the function completes, 
+its frame is removed.
+
+- A call stack is the data structure that Scala uses when we call a recursive function to 
+keep track of the execution of the program, with each function call being a stack frame.
+
+- The result of the factorial function for example is only produced after all the function calls 
+have been completed to the base case and then the call stack unwinds, multiplying each number until 
+it reaches the number given, because of LIFO.
