@@ -1,0 +1,54 @@
+TASKS:
+- Create an endpoint in play framework
+
+behind back end for front end layer, the business logic is held
+for offers, there are 2 systems. The webapi-offers and mobileapi-offers, which sends that information to 
+offers-internal (an open api) does and checks many things and sends the required info to mobileapi-offers.
+
+What happens when we send a message? 
+
+- User A & User B want to talk
+- We represent this by creating a group with an id;123
+- We then make the two users members of the group
+- Subscriptions mean the users are subscribed to a group. But you can have users
+in the group that aren't subscribed meaning they don't see messages.
+- This is how chat is represented in chat-internal.
+
+- In chat api we create groups and they refer to two people and perhaps to products.
+- In chat api we also have subscription concept.
+- We use groups and subcriptions for representation of data.
+-Chatapi converts the message request to something that chat internal understands. It will tell
+chat internal to send the messages to the users. 
+- Whenever you send a message, chat internal stores that data. 
+- Chat internal is linked to a database (dynamo db). Postgres and Dynamo are essential
+- There is one single user id for users across all systems. 
+
+- Chat internal will fetch the info from the database and then represent that to the users.
+
+- Chatapi already has the capacity to send attachments but the client doesn't allow the 
+option to be visible to users.
+
+-Image upload uss the concept known as eventual consistency. (look this up)
+
+DEPOP CODE:
+
+- Routes file: Defines the API endpoints written in Play Framework
+- Message controller is a class that uses clients and clients are what the chatapi will make requests to
+- Clients are making requests also.
+- In the settings folder, you have all the configurations for the applications (messages app) (offer app)
+- You must write tests for all the code you work with adding particular inputs to code must result in the output
+you expect.
+- When it pertains to security you need to run multiple tests. You also run more tests when you're adding something
+new as this builds confidence in the code.
+
+- Lookup validators as classes and what makes themm different to other classes. Lookup Dynamo and Postgres. Dynamo is simpler
+to understand. 
+
+
+HACKATHON PRESENTATIONS:
+
+- Get familiar with AWS as many of the presentations used AWS services.
+
+- Great ideas relating to rental, AR, Suscription/Broadcast messages.
+
+- Prompt engineering used for generating relevant responses for cleaning product descriptions.

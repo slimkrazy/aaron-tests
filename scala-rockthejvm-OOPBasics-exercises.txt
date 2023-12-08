@@ -1,0 +1,15 @@
+                                  OOP BASICS EXERCISES
+
+WRITER CLASS:
+
+1. Create a writer class with parameters (first name, surname and YOB)
+2. The writer class must have a method called fullname which returns the concatenation
+fist name and surname.
+
+NOVEL CLASS:
+
+1. Create a novel class with parameters (name, year of release, author(instance of type writer))
+2. The novel class must have a method called authorAge that returns the age of the author at the year of release
+3. It also must have the method "isWrittenBy"(author).
+4. It must have a method called "copy" which receives a new year of release. Returns a new instance of novel  
+with a new year of release.
