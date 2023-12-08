@@ -33,7 +33,7 @@ EXAMPLE:
 
 {
 
- val person = new Person // "new Person" is the instantiation of the class Person snd "val person" holds the object.
+ val person = new Person // "new Person" is the instantiation of the class Person and "val person" holds the object.
  println(person)
 
 }
