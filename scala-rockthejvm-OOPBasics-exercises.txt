@@ -4,7 +4,17 @@ WRITER CLASS:
 
 1. Create a writer class with parameters (first name, surname and YOB)
 2. The writer class must have a method called fullname which returns the concatenation
-fist name and surname.
+first name and surname.
+
+How to return a concatenation in Scala:
+
+- To get a class to return a concatenation in Scala we must define a method that PERFORMS the concatenation
+
+- Create the class - class Writer(fname: String, sname: String, val yob: Int) 
+- Create method - { def fullName: String = fname + " " + sname }
+- Here a method is constructed that when "fullName" is called, it will concatenate fname and sname.
+
+
 
 NOVEL CLASS:
 
@@ -13,3 +23,110 @@ NOVEL CLASS:
 3. It also must have the method "isWrittenBy"(author).
 4. It must have a method called "copy" which receives a new year of release. Returns a new instance of novel  
 with a new year of release.
+
+1. Create the class - class Novel (name: String, yor: Int, author: Writer) //Important to note that we can use a class as
+a type when specifying parameters within class constructors. {
+    def authorAge = yor - author.yob
+    def isWrittenBy(author: Writer) = author == this.author
+    def copy(newYear: Int): Novel = new Novel(name, newYear, author)
+}
+
+INSTANTIATIONS OF WRITER AND NOVEL CLASSES:
+
+ val author = new Writer("Charles", "Dickens",1812 )
+ val novel = new Novel("Great Expectations", 1861, author)
+
+ println(novel.authorAge)
+ println(novel.isWrittenBy(author))
+
+
+ class Writer(fname: String, sname: String, val yob: Int) {
+  def fullName: String = fname + " " + sname
+ }
+
+ class Novel(name: String, yor: Int, author: Writer)
+ {
+  def authorAge = yor - author.yob
+  def isWrittenBy(author: Writer) = author == this.author
+  def copy(newYear: Int): Novel = new Novel(name, newYear, author)
+ }
+
+ val author = new Writer("Charles", "Dickens",1812 )
+ val novel = new Novel("Great Expectations", 1861, author)
+
+ println(novel.authorAge)
+ println(novel.isWrittenBy(author))
+
+
+
+- If we want to increment n times, we need to use recursion. In the above method, we call the "Inc"
+method constructed beneath class counter and then we recursively call the above inc method with n-1 times.
+
+How can we unite a field with a method that's job is to return that field (a getter)?
+- We make the n parameter a val, name it count instead of n which receives an Int. 
+
+
+
+COUNTER CLASS:
+
+1. The counter class receives an Int. 
+2. And has a method that would return a current count.
+3. And a method to increment and decrement the counter by 1.
+4. The methods will return a new counter.
+5. Overload the Inc and Dec methods to receive a parameter,
+the amount by which we Inc and Dec the counter.
+
+
+val counter = new Counter
+counter.inc.print
+counter.inc.inc.inc.print
+counter.inc(10).print
+
+
+  class Counter(val count: Int = 0) {
+  def inc = {
+   println("incrementing")
+   new Counter(count + 1)
+  }
+  def dec = {
+   println("decrementing")
+   new Counter(count - 1)
+  }
+
+  def inc(n: Int): Counter = {
+   if (n <= 0) this
+   else inc .inc(n-1)
+  }
+
+  def dec(n: Int): Counter =
+   if (n <= 0) this
+   else dec.dec(n-1)
+
+ def print = println(count) 
+
+}
+
+
+OOB TAKEAWAYS:
+
+- Defining Classes: We use the keyword "class" to define a class. 
+EXAMPLE: class Person(name: String, age: Int)
+
+- Instantiating a class: First we create a val to hold the object/instantiation
+of the class. Then we define the object via the keyword "new" and then the class name.
+EXAMPLE: val Aaron = new Person("Aaron", 28)
+
+- Parameters v Fields: We understand that fields and parameters are different in that
+fields are accessible and parameters are not. To gain access to a parameter we must convert it to
+a field via use of the keyword val.
+EXAMPLE: class Person(val name: String, age: Int) 
+
+- Defining methods: We use the keyword def to define a method within a class. 
+EXAMPLE: def greet(): String = {}
+
+- Calling methods: We use the class name then a period and then the name of the method
+to call a method.
+EXAMPLE: val bobSayHi = bob.greet 
+
+- "This": We use the keyword this to access the current instance being operated on and to 
+define and call other constructors.
