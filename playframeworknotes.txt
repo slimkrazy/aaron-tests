@@ -1,0 +1,23 @@
+                                    PLAY FRAMEWORK NOTES
+
+WHAT IS A FRAMEWORK?
+
+- what is a framework
+* A framework, in the context of software development, is a structured set of tools, libraries, 
+conventions, and best practices that provides a foundation for building applications. It simplifies 
+and streamlines the development process by offering pre-built components and a predefined structure, 
+enabling developers to focus more on application-specific logic rather than reinventing common functionalities.
+
+
+- what is json
+*JSON, which stands for JavaScript Object Notation, is a lightweight data-interchange format. It is easy for humans to 
+read and write, and it is easy for machines to parse and generate. JSON is often used to transmit data between a server 
+and a web application, as an alternative to XML.
+
+- how does scala deal with json 
+(https://www.playframework.com/documentation/2.8.x/ScalaJson) Play JSON documentation
+* Play JSON library. The Play JSON library comes with the Play framework which is what we use at Depop.
+Dependency configuration is the first aspect. 
+
+* To use Play JSON we need to add the Play JSON library to our project (learning-playframework)
+- what is a library
