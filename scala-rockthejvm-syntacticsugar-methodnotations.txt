@@ -1,0 +1,196 @@
+                              SCALA SPECIFIC METHOD NOTATIONS
+
+SYNTACTIC SUGAR :
+
+class Person(val name: String, favouriteMovie: String) {
+  def likes(movie: String): Boolean = movie == favouriteMovie // Meaning this person likes a movie if the
+  // movie equals favourite movie. Otherwise they don't like the movie
+  def hangOutWith(person: Person): String = s"${this.name} is hanging out with ${person.name}"
+}
+
+* When we call hangOutWith
+  val aaron = new Person("Aaron", "GFP2")
+  println(aaron.likes("GFP2")) // This would evaluate to true because we have specified in the instantiation of the
+  Person class that GFP2 is Aaron's favourite film. The likes method compares the passed "movie" with the 
+  "favouriteMovie" of the person. If they match, True will be returned.
+
+  hangOutWith method further explained:
+
+ *
+  The method takes a Person parameter named person, representing the person with whom the current instance is hanging out.
+It uses string interpolation (s"${...}") to create a string that includes the names of both persons. 
+${this.name} refers to the name of the current instance (the person whose hangOutWith method is being called), 
+and ${person.name} refers to the name of the person passed as a parameter.
+The resulting string represents a message indicating that the current person is hanging out with another person.
+  
+  * Another more natural way to call the "likes" method is like this
+  println(aaron likes "GFP2") // infix/operator notation ONLY WORKS WITH METHODS THAT HAVE 1 PARAMETER.
+  * This is syntactic sugar but we don't use it at Depop.
+
+  "Operators" in Scala:
+  val tom = new Person("Tom", "Fight Club")
+  println(mary hangOutWith tom) // This will print "Mary is hanging out with Tom" using the syntactic sugar
+  natural language notation. 
+
+  * The hangOutWith method acts as an operator between Mary and Tom because the string interpolation concatenates
+  the two names of the people involved in the hangout.
+  * Because of Scala's method naming leniency, you can actually name the hangOutWith method '+' or '*' instead of 
+  hangOutWith and the output would be the same.
+  * For example, you can write println(mary hangOutWith tom) as println(mary.+(tom)) providing you've named the method
+  '+'
+
+  * Ultimately mathematical operators are methods in Scala.
+
+  QUESTION: Do we use Akka at Depop?
+
+ PREFIX NOTATIONS:
+ 
+ - Prefix notations are a form of syntactic sugar. They are based around unary operators.
+ Unary operator examples: val x = -1 (negative sign is a unary operator)
+ - Unary operators are also methods: val y = 1.unary_-
+ - The two examples above are equivalent, but this syntactic sugar only works with (- + ~ !)
+
+
+ POSTFIX NOTATIONS:
+
+ - Functions that DON'T receive any parameters can be used in a postfix notation.
+ - Example of a function that doesn't receive any parameters, def isAlive: Boolean = true.
+ - So we can typically call a method by using the period: println(aaron.isAlive).
+ - However in a postfix notation style we can say println(aaron isAlive).
+
+
+APPLY METHOD (CRUCIAL):
+
+- Apply method example: def apply(): String = s"Hi, my name is $name and I like $favouriteMovie."
+- (The implementation here is a greeting) When we call the apply method: println(aaron.apply())
+it will return the following: Hi, my name is Aaron and I like GFP2.
+- However if we say println(aaron()) this is equivalent to calling it the other way.
+
+
+METHOD NOTATIONS/SYNTACTIC SUGAR EXERCISES:
+
+1. Exercise 1: Overload this + operator (infix operator), by adding another class operator that receives a string and returns
+a new Person with a nickname eg. (aaron + "the rockstar" => new person "Aaron (the rockstar)):
+  def +(person: Person): String = s"${this.name} is hanging out with ${person.name}"
+
+    Answer:   
+    
+     def hangOutWith(person: Person): String = s"${this.name} is hanging out with ${person.name}"
+    Remember, the hangOutWith method can be named '+'. The hangOutWith method acts as an operator between Mary and Tom 
+     because the string interpolation concatenates the two names of the people involved in the hangout.
+     Now we just need to add another method called + to overload the infix operator and construct it so that we can pass             "name" and "nickname" arguments to it.
+           
+            1. Define another method within the class person constructor named "+" to overload the operator and with a parameter name
+            "nickname" and a parameter type of String.
+              
+              def +(nickname: String):
+            
+            2. The method will return an instance of the Person class modified to include a nickname.   
+              
+              def +(nickname: String): Person = new Person(s"$name ($nickname)", favouriteMovie)
+            
+            3. To print to the console, we'll call the object aaron and call the + method to concatenate the 
+               the name and the nickname. We then use the apply method because the + method for nickname returns a person
+               not a string. To see something meaningful/readable in the console we can call a method that returns a string eg. apply 
+              
+              println((aaron + "AAA").apply())
+
+            4. OUTPUT: Hi my name is Aaron (AAA) and I like GFP2.
+
+
+            
+2. Exercise 2: Add an age to the Person Class with default 0 value.
+Add a unary + operator which increments the value of the age and returns a new person with the age +1.
+eg. +Aaron will return => Aaron with the age incremented +1.
+
+   Answer: 
+
+   1. We need to add the age parameter in the class constructor and give it the default value of 0.
+   REMEMBER the val keyword is essential in allowing you to change regular parameters into accessible fields 
+   outide of the class.
+   - Why set the age parameter to a default value of 0? By doing this, all instantiations of the person class 
+      will have their age set to 0 unless we specify the age.
+   
+   class Person(val name: String, val favouriteMovie: String, val age: Int = 0) 
+
+   2. We now need to construct the unary_+ method that will increment the age of a person instance by 1.
+      Here the unary method returns a new person with the same parameters but with the age value incremeted by 
+      +1
+      
+      def unary_+ : Person = new Person(name, favouriteMovie, age + 1)
+      Unlike with the other methods, in Scala, we don't need to use parentheses when defining unary operator methods. 
+
+   3. Now when we want to call the age of the person Aaron so that it's incremented by 1
+      we use this function: 
+      
+      println((+aaron).age) 
+      
+      This will get the compiler to access the age field of the person first becaue of the () around (+aaron), then call the unary_+ method to add
+      +1 to the age which has been set to a default value of 0. So the method returns a new person instance with the
+      age incremented by +1.
+
+
+
+ 3. Exercise 3: Add a "learns" method in the Person class. It will receive a String parameter and will return:
+"Aaron learns Scala".
+ Then add a learnscala method that doesn't receive any paraameters but calls the learns method. With "Scala" as a parameter.
+ Do this with postfix notation.
+    
+    Answer:
+
+    1. First we define a method named "learns" in the class Person constructor.
+       
+       def learns
+    
+    2. Then we give the learns method a parameter named "things" and of parameter type String.
+       
+       def learns(things: String)
+
+    3. Now we move to the implementation of the method which we know will be a string. We will make
+       this an s interpolated string.
+
+       def learns(things: String) = s"$name learns $thing."
+
+    4. Now we can define the "learnsscala" method. 
+       
+       def learnsscala 
+
+    5. The learnsscala method is parameterless/doesn't receive anything. Use of the "this"
+       keyword is to explicitly call the "learns" method and "Scala" serves as an argument which is passed
+       to the "learns method we defined earlier. The implementation is 
+       as follows.
+
+       def learnsScala = this learns "Scala"
+
+    6. Because it's parameterless, we can call the learnScala method using postfix notation.
+       We don't do this at Depop however for clarity purposes.
+
+       println(aaron learnsScala)  - postfix notation style
+       println(aaron.learnsScala)  - default style
+
+       Returns - Aaron learns Scala.
+
+
+
+4. Overload the apply method to receive a number and returns a string.
+   For example: aaron.apply(2) => "Aaron watched GFP2 2 times"
+
+    Answer:
+
+    1. First we overload the apply method to receive a number by defining a "parameterised" apply method.
+       It accepts an int: 
+       
+       def apply(n: Int) 
+
+    2. Then we define the implementation to pass the arguments to.
+
+       def apply(n: Int): String = s"$name watched $favouriteMovie $n times."
+
+    3, When we print: println((aaron).apply(2)) it will return
+    
+       Aaron watched GFP2 2 times.
+
+       We can also use the notation println(aaron(10)) which will tell the compiler to use the apply
+       method that receives Int specifically.
+
+
