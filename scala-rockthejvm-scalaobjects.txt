@@ -10,11 +10,11 @@ the class constructor itself and have it print to the console rather than only b
 specified within objects. This is specifically known as a "class level field".
 
 Key Concept: Scala objects - In contrast, to languages like Java which use class level functionality, Scala 
-uses something called Scala objects.
+uses something called Scala objects. To use class level definition in Scala, we use Scala objects.
 
 EXAMPLE -   
 
-object Person {
+object Person { // type which is Person + it's only instance (the object is it's own type hence why it's type is person)
     val N_EYES = 2
   } 
 
@@ -23,11 +23,12 @@ We access the N_EYES field like this - println(Person.N_EYES) (returns 2)
 - The difference between a Scala object and a class in Scala is that a Scala object is a "singleton instance"
 meaning it can't be used as a blueprint to create more instantiations but it's fields can be accessed without
 the need for instantiations.
+- Another difference is that a Scala object CANNOT receive parameters like a class can.
 
 - When we say "singleton instance" this means that there is only a SINGLE instance that can be referred to via the name
 Person. For example:
 
-val person1 =new Person
+val person1 = new Person
 val person2 = new Person
 println(person1 == person 2)
 
