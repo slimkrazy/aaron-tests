@@ -1,0 +1,108 @@
+                                     SCALA OBJECTS
+
+
+NOTE: The reason we've been referring to instances of classes in Scala as instantiations rather than 
+objects is because objects in Scala are a concept in and of themselves.
+
+Key Concept: class level functionality - refers to features/functionality associated with the class 
+itself as opposed to instances of the class. With class level functionality, we can access parameters within
+the class constructor itself and have it print to the console rather than only being able to access parameters
+specified within objects. This is specifically known as a "class level field".
+
+Key Concept: Scala objects - In contrast, to languages like Java which use class level functionality, Scala 
+uses something called Scala objects.
+
+EXAMPLE -   
+
+object Person {
+    val N_EYES = 2
+  } 
+
+We access the N_EYES field like this - println(Person.N_EYES) (returns 2)
+
+- The difference between a Scala object and a class in Scala is that a Scala object is a "singleton instance"
+meaning it can't be used as a blueprint to create more instantiations but it's fields can be accessed without
+the need for instantiations.
+
+- When we say "singleton instance" this means that there is only a SINGLE instance that can be referred to via the name
+Person. For example:
+
+val person1 =new Person
+val person2 = new Person
+println(person1 == person 2)
+
+- This will print true to the console since Scala objects permit that if two things refer to a scala object they're equal.
+- In contrast to Scala objects, classes are blueprints for instances to be created, providing
+all the necessary starting parameters. You do however need to create instances of a class to access it's fields.
+
+
+SCALA OBJECTS CONT.
+
+- Scala objects can also contain methods, just like classes.
+
+object Person {
+    val N_EYES = 2
+    def canFly: Boolean = false
+  } 
+
+  println(Person.N_EYES) will print 2 to the console.
+
+* Another major difference between Scala objects and classes is that Scala objects DO NOT receive parameters.
+You can define vals, vars and methods in Scala objects.
+
+
+COMPANIONS:
+
+- We can have Scala objects and classes with the same name written in the same scope:
+  
+  object Person {
+//STATIC/CLASS LEVEL FUNCTIONALITY
+    val N_EYES = 2
+    def canFly: Boolean = false
+  }
+  class Person() = {
+//INSTANCE LEVEL FUNCTIONALITY 
+   }
+  }
+
+- We do this to separate instance level functionality and class level or static functionality.
+- Just as there is class level functinality or static functionality, we also have instance level functionality.
+
+- This pattern of having classes and objects with the same name written in the same scope as above is
+  called "companions". Class Person and object Person are companions because they are written in the same scope and 
+  have the same name.
+
+- Via the companion pattern, all the code we write here pertaining to persons will be accessed via an instance whether it
+  be a singleton instance via object Person or a regular instance made via class Person.
+
+  object Person {
+//STATIC/CLASS LEVEL FUNCTIONALITY
+    val N_EYES = 2
+    def canFly: Boolean = false
+
+//FACTORY METHOD - BUILDS PERSONS WHEN CALLED
+    def from(mother: Person, father: Person) = new Person("Joshua")
+  }
+  class Person() = {
+//INSTANCE LEVEL FUNCTIONALITY 
+   }
+  }
+
+- The "from" method is called a factory method because it's function is to build persons with a certain set of parameters
+  in this case a mother and father that are both instances of Person.
+
+- Factory methods are also called "apply" methods rather than another name like "from".
+- We use the from method like so:   val joshua = Person.from(aaron, mary)
+
+
+SCALA APPLICATIONS:
+
+- Scala Applications = Scala object WITH specific method:
+  
+  def main(args: Array[String]): Unit
+
+  - This allows our code to run on the JVM. We can also use the following:
+
+  object ScalaObjects extends App {}
+
+  - This is a shorter way to get the Scala code to run.
