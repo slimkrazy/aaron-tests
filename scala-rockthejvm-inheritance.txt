@@ -1,0 +1,192 @@
+                                                      SCALA INHERITANCE & TRAITS
+
+
+KEY CONCEPTS: SINGLE CLASS INHERITANCE
+- A language that grants you single class inheritance allows you to extend one class at a time.
+
+
+  class Animal {
+
+    def eat = println("nononom")
+  }
+
+  class Cat extends Animal
+
+  val cat = new cat
+}
+
+- Here the syntax "extends" allows one class to INHERIT all the non-private fields and methods from another class. If we were to put the keyword
+"private" before defining the method eat, cat would no longer be able to call eat. The method would only be accessible within that specific class.
+
+- As a result, the variables defined in class Cat can call the methods defined in class Animal for example:
+
+  class Animal { // super-class
+
+    def eat = println("nononom")
+  }
+
+  class Cat extends Animal // sub-class of animal 
+
+  val cat = new Cat
+  
+  cat.eat // This will return nononom to the console.
+
+- In this context we call Cat a sub-class of Animal and Animal a super-class of Cat.
+
+
+ACCESS MODIFIERS:
+
+- Public/No modifier - All access granted to methods and variables within class and without.
+- Private - Keyword that prevents access to methods and variables within a class.
+- Protected - Keyword that allows the sub-class access to methods defined within the super-class. The method won't be available to be called upon
+  outside of this however. For example:
+
+    class Animal {
+
+    protected def eat = println("nononom")
+  }
+
+  class Cat extends Animal {
+    def crunch = {
+      eat
+      println("crunch crunch")
+    }
+  }
+
+  val cat = new Cat
+  cat.crunch
+
+  - The eat method is protected and so can't be called from outside the classes. However, we've defined crunch in a way that calls eat before printing
+  "crunch crunch" to the console. It can do this because Cat is a sub-class of Animal.
+
+
+ CONSTRUCTORS:
+
+class Person(name: String, age: Int)
+class Adult(name: String, age: Int, idCard: String) extends Person
+
+- Here we have constructed a super-class Person and a sub-class Adult however the compiler will return:
+"Unspecified value parameters: name: String, age: Int" because when we instantiate a DERIVED class like Adult, the compiler will need to call a constructor from
+a parent class first. 
+
+- It will need to call the constuctor of Person BEFORE it calls the constructor of Adult.
+
+- We get the error "Unspecified value parameters: name: String, age: Int" because the parameterless constructor Person which is referred to "extends Person" does not exist.
+Person(name: String, age Int) however does exist so for the compiler to recognise Adult as a sub-class of Person we need to make sure the correct arguments are passed.
+
+class Person(name: String, age: Int)
+class Adult(name: String, age: Int, idCard: String) extends Person(name, age)
+
+AUXILLIARY CONSTRUCTORS (this keyword) IN THE CONTEXT OF INHERITANCE (***)
+
+
+OVERRIDING:
+
+- So that we can apply a different implementation to the method eat, we need to use the keyword override which will allow us to override the og implementaton defined
+earlier in the super-class Animal which is protected.
+  
+
+class Animal {
+
+    protected def eat = println("nononom")
+  }
+
+  class Cat extends Animal {
+    val creatureType = "wild"
+    def crunch = {
+      eat
+      println("crunch crunch")
+    }
+  }
+
+  val cat = new Cat
+  cat.crunch
+
+  class Dog extends Animal {
+     override val creatureType = "domestic"
+     override def eat = println("crunch, crunch")
+  }
+  val dog = new Dog
+  dog.eat
+
+  - The override keyword functions the same way for vals and vars.
+  - Above we have overriden the creatureType val in the sub-class dog and so when we call it, it will return "domestic" to the console rather than "wild".
+
+  - class fields in Scala can be overridden directly in the class constructor for example:
+  
+  class Dog(override val creatureType: String) extends Animal {
+     override def eat = println("crunch, crunch")
+  }
+  val dog = new Dog ("K9")
+  dog.eat
+  println(dog.creatureType)
+
+  - The instantiation of dog can pass "K9" as an argument for creatureType because we have overriden the Animal class implementaion of "wild" in the constructor 
+  of class Dog which is a sub-class of Animal via "extends Animal".
+
+
+  TYPE SUBSTITUTION/POLYMORPHISM (***):
+
+  - We can create a variable that is an instantiation of a class that has a different type associated with it. For example:
+
+   val unknownAnimal: Animal = new Dog("K9") 
+
+  - This allows instantiations we create to access specifically the overriden methods of sub-classes whilst being of a super-class type.
+
+
+  SUPER:
+
+  - Super is used when you want to reference a method or a field from a parent class. For example:
+
+    class Dog(override val creatureType: String) extends Animal {
+     override def eat = {
+       super.eat 
+       println("crunch, crunch")
+     }
+  }
+  val dog = new Dog ("K9")
+  dog.eat
+  println(dog.creatureType)
+
+  - The keyword "super" allows us to access the eat methods defined in the super-class and so the implementation of the eat methods
+  above will return "nononom" and "crunch, crunch" to the console.
+
+
+  PREVENTING OVERRIDES:
+
+  - Sometimes we might want to limit the overrides of our fields or methods. 
+  - We can do this using the following keywords:
+
+  1. "final" this will PREVENT derived classes from overriding the the super-class eat method. For example:
+
+   class Animal { // super-class
+
+    final def eat = println("nononom")
+  }
+
+  - Now no derived classes can override the eat method defined in Animal.
+
+  2. "final" can also be applied directly to the class meaning that the compileer will prevent other classes from 
+     inheriting it's methods,vals etc.
+
+    final class Animal // super-class
+
+  
+  3. "sealed" (***). This is a softer restiction than final because you can still extend a class that has been sealed within the same file
+     so:
+
+    sealed class Animal { // super-class
+
+    This means that sub-classes Dog and Cat are still permitted to extend Animal but not classes outside this file.
+
+ 
+
+     
+
+
+
+
+
+
+
+
