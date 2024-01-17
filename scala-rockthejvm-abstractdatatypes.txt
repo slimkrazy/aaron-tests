@@ -1,0 +1,148 @@
+                                 ABSTRACT DATA TYPES:
+
+
+
+ABSTRACT CLASSES:
+
+- Classes which contain unimplemented or abstract fields and methods are called abstract classes/
+- We define abstract classes by using the keyword "abstract". Example:
+
+  abstract class Animal {
+
+    val creatureType: String
+    def eat: Unit
+  }
+
+- Here we're not supplying the value with anything as in it doesn't equate to anything. This is an
+"abstract value".
+- "def eat: Unit" is declared without providing a concrete implementation making it an abstract method.
+
+- Abstract classes cannot be instantiated. The variables have no values and the methods no implementation
+and so there is no "blueprint" to setup the instantiations with.
+
+- Essentially abstract classes are designed to be extended by subclasses later on which is
+where the methods/values will have their implementations given to them. For example:
+
+  abstract class Animal {
+
+    val creatureType: String
+    def eat: Unit
+  }
+
+  class Dog extends Animal {
+
+    val creatureType: String = "canine"
+   def eat: Unit = println("crunch crunch")
+  }
+
+  Here the Dog subclass has a value named creatureType and a method defined as eat. Both are given
+  values/implementations and they override the abstract members of the same name in the superclass.
+
+
+ TRAITS:
+
+ - Traits are the ultimate abstract data type in Scala.
+ - They are declared using the keyword "trait" and then the name of the trait like how we do with classes.
+ - For example:
+   
+   trait Carnivore {
+    def eat(animal: Animal): Unit
+
+   }
+
+- Traits by default have abstract fields and methods.
+
+- Crucially traits can be inherited ALONG classes unlike abstract classes. For example:
+
+abstract class Animal {
+
+    val creatureType: String
+    def eat: Unit
+  }
+
+  class Dog extends Animal {
+
+    val creatureType: String = "Domestic"
+   def eat: Unit = println("crunch crunch")
+  }
+    
+    trait Carnivore {
+    def eat(animal: Animal): Unit
+   }
+
+   class Crocodile extends Animal with Carnivore {
+
+   }
+
+   - This means that this subclass Crocodile inherits members from the superclass Animal via "extends Animal"
+   and the trait Carnivore via the keyword "with" Carnivore. 
+
+   IMPLEMENTATION FOR SUBCLASS CROCODILE:
+
+     class Crocodile extends Animal with Carnivore {
+   
+    val creatureType: String = "croc"
+    def eat: Unit = println ("nomnomnom")
+    def eat(animal: Animal): Unit = println (s"I'm a croc and I'm eating ${animal.creatureType}")
+  
+  }
+
+  val dog = new Dog
+  val croc = new Crocodile
+  croc.eat(dog)
+
+  - This will print "I'm a croc and I'm eating canine" because we instantiated the 2 subclasses
+  and then we called the eat method on the class instance of crocodile that requires an animal arugment to
+  be passed to it which in this case is dog. The s interpolated string calls the creatureType implementation 
+  given in the subclass Dog because this implementaion overrides the abstract implementation of creatureType given 
+  in Animal. 
+
+
+TRAITS VS ABSTRACT CLASSES:
+
+- Abstract classes can have both abstract and non-abstract types. for example:
+
+  abstract class Animal {
+
+    val creatureType: String = "wild"
+    def eat: Unit
+  }
+
+This would be a non-abstract type because we've given the value an implementation.
+
+- Traits can also take both abstract and non-abstract types. For example:
+
+trait Carnivore {
+    def eat(animal: Animal): Unit
+    val preferredMeat: String = "fresh meat"
+}
+
+val preferredMeat is a non-abstract member 
+
+
+HOW ARE ABSTRACT CLASSES AND TRAITS DIFFERENT:
+
+1. Traits do not have constructor parameters.
+
+2. Multiple traits can be inherited by the same class but we can't extend multiple classes in a 
+subclass.
+
+3. Traits describe BEHAVIOUR whereas an abstract class is a type of thing.
+
+
+
+SCALA TYPE HIERARCHY (***):
+
+- scala.Any (The mother of all types)
+
+- Derived from "Any" is scala.AnyRef .scala.AnyRef is mapped to Java's Object type
+all classes/types we use will be derived from scala.AnyRef including String, List, Set
+
+- Derived from all of these is scala.Null whihc can replace any class with null. (***)
+
+- Scala.AnyVal like scala.AnyRef is derived from scala.Any.
+
+- From scala.AnyVal we have these classes Int, Unit, Boolean, Float etc.
+
+- Derived from all the above is scala.Nothing (a sub type of every type in Scala) which can replace everything it's derived from.
+
