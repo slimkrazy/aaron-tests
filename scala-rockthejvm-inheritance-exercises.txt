@@ -1,0 +1,93 @@
+                                INHERITANCE EXERCISES
+
+
+1. CREATE A LINKED LIST OF INTEGERS:
+
+-  The method head will return an Int. It will be the first element of the list.
+
+-  Another method called tail will hold the remainder of the list. "It will hold the pointer 
+of the remainder of the list."
+
+- Another method named isEmpty which will return a Boolean
+
+- A method called add(int) which receives an int that returns a new list with the new element addeed.
+
+- toString method returns a string representation of the list.
+
+
+SOLUTION:
+
+abstract class MyList {
+
+def head: Int // first element of the list
+
+def tail: MyList // Holds the remainder of the list ans is of type MyList
+
+def isEmpty: Boolean // Will return a Boolean 
+
+def add(element: Int): MyList // Will return a new list with an element added to it
+
+}
+
+- MyList is an abstract class that we need to extend by two sub-classes (the empty list and the non-empty list)
+- The empty list will be an object, a subclass of MyList:
+
+object Empty extends MyList { // objects can extend classes.
+
+  def head: Int = throw new NoSuchElementException // throw expressions are expressions that return nothing
+
+  def tail: MyList = throw new NoSuchElementException
+
+  def isEmpty: Boolean = true
+
+  def add(element: Int): MyList = new Cons(element, Empty)
+}
+
+class Cons(h: Int, t: MyList) extends MyList {
+
+  def head: Int = h
+
+  def tail: MyList = t
+
+  def isEmpty: Boolean = false
+
+  def add(element: Int): MyList = new Cons(element, this)
+}
+
+  object ListTest extends App {
+
+    val list = new Cons(1, Empty)
+    
+    println(list.head) // Will return 1
+
+    println(list.isEmpty) // will return false because this by definition is a non-empty list.
+  }
+
+
+ 
+ SUMMARISE:
+
+ - Scala offers class-based inheritance:
+    
+    class Animal
+    class Cat extends Animal
+
+ - Access modifiers: private, protected, default (none = public)
+
+ - We need to pass in constructor arguments to parent classes from sub-classes
+
+ - Derived classes/ sub-classes can override members or methods
+
+ - We can reuse parent fields/methods with the keyword super, check inheritance notes
+
+ - We can prevent inheritance with keywords final and sealed
+
+ - Abstract classes and traits, check abstract data types notes
+
+ - Inheriting from a class and multiple traits
+
+
+
+
+
+
