@@ -1,0 +1,43 @@
+                          LISTS AND LINKED LISTS IN SCALA (CHAT GPT) 
+
+
+IMPLEMENTING OUR OWN COLLECTION VIA A LINKED LIST
+
+WHAT IS A LIST?
+
+- A linked list is a data structure consisting of a sequence of elements, where each element points to the next one in the sequence.
+ It's a dynamic data structure, and unlike arrays, the size of a linked list can change during program execution. 
+ The basic building blocks of a linked list are nodes, and each node contains data and a reference (or link) to the next node in the sequence.
+
+
+ NODES: THE BUILDING BLOCKS OF LINKED LISTS
+
+- In the context of linked lists, a node is a fundamental building block that stores an element of data and a reference (or link) 
+to the next node in the sequence. Each node in a linked list contains two main components:
+
+Data:
+
+The data part of a node holds the actual value or information associated with that particular node.
+
+Next (Link or Reference):
+
+The next part of a node contains a reference (or link) to the next node in the sequence. This reference points to the subsequent node in the linked list.
+
+NODE EXAMPLE:
+
+class Node[A](data: A, var next: Option[Node[A]])
+
+- [A] represents the generic type of data that the node holds. 
+
+- The "data" parameter in the constructor stores the actual value or information associated with the node. 
+
+- "A" is the element that the node holds.
+
+- The next variable is an "Option" that holds a reference to the next node in the linked list. It is set to None if the node is the last one in the list.
+
+- The concept of nodes is central to linked lists, and they enable the dynamic creation of sequences of elements where 
+each element is connected to the next one, forming a chain-like structure. The last node in the list typically has a reference set 
+to None or null to indicate the end of the list.
+
+
+EMPTY AND NON EMPTY LISTS:
