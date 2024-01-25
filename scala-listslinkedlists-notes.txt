@@ -3,7 +3,7 @@
 
 IMPLEMENTING OUR OWN COLLECTION VIA A LINKED LIST
 
-WHAT IS A LIST?
+WHAT IS A LINKED LIST?
 
 - A linked list is a data structure consisting of a sequence of elements, where each element points to the next one in the sequence.
  It's a dynamic data structure, and unlike arrays, the size of a linked list can change during program execution. 
