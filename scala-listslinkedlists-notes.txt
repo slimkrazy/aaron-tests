@@ -1,4 +1,4 @@
-                          LISTS AND LINKED LISTS IN SCALA (CHAT GPT) 
+                          LISTS AND LINKED LISTS IN SCALA (CHAT GPT NOTES) 
 
 
 IMPLEMENTING OUR OWN COLLECTION VIA A LINKED LIST
@@ -40,4 +40,91 @@ each element is connected to the next one, forming a chain-like structure. The l
 to None or null to indicate the end of the list.
 
 
-EMPTY AND NON EMPTY LISTS:
+EMPTY AND NON EMPTY LISTS (Deeper breakdown of inheritance exercises):
+
+abstract class MyList {
+
+def head: Int // first element of the list
+
+def tail: MyList // Holds the remainder of the list and is of type MyList
+
+def isEmpty: Boolean // Will return a Boolean 
+
+def add(element: Int): MyList // Will return a new list with an element added to it
+
+}
+
+1. We have an abstract class that relies on subclasses to give it's methods implementations.
+
+2. CRUCIALLY, we start with an abstract class because it does the following 
+
+- Define a common interface - The abstract class MyList defines a common interface for all types 
+of lists, whether they are empty or non-empty. It also specifies the operations that can be performed
+on a list such as accessing the head, getting the tail, checking if it's empty, and adding an element.
+
+- Establishes common behaviour - By defining common behavior in the abstract class, you encapsulate shared 
+functionality. For example, the concept of having a head, a tail, and being able to check for emptiness 
+is common to all lists, so these behaviors are defined once in the abstract class.
+
+- Enable polymorphism - Using an abstract class allows you to leverage polymorphism, where you can 
+treat different types of lists (empty or non-empty) uniformly through the common interface. This can 
+simplify code and make it more flexible.
+
+- Force implementaion of methods - Abstract methods in the class force concrete subclasses to provide implementations.
+This ensures that each specific type of list adheres to the contract defined by the abstract class.
+
+
+WHY WOULD WE USE AN ABSTRACT CLASS OVER A NORMAL CLASS?
+
+- In summary, we use an abstract class when we want to establish a common interface for a group of related
+sub-classes/objects (empty, cons) but want each class/object to give it's own implementation for the methods provided
+by the abstract super-class.
+
+- Remember, we can't create instances of abstract classes. We can only create instances of the associated 
+sub-classes. We can create instances of regular classes.
+
+
+BREAKDOWN OF ABSTRACT CLASS MyList SUBCLASS EXTENSIONS:
+
+object Empty extends MyList { // objects can extend classes.
+
+  def head: Int = throw new NoSuchElementException // throw expressions are expressions that return nothing
+
+  def tail: MyList = throw new NoSuchElementException
+
+  def isEmpty: Boolean = true
+
+  def add(element: Int): MyList = new Cons(element, Empty)
+}
+
+1. We use the "throw expression" NoSuchElementException because the abstract MyList superclass needs the abstract method
+"def: head" to return an Int and so the implementation is expected to be an Int. The object represents Empty however and so it
+doesn't make sense for it to return an Int. Therefore we use the NoSuchElementException throw expression to crash the program If
+def head is called on the Empty object.
+
+2. For the head and tail methods, if you attempt to access the head or tail of an empty list (represented by the Empty object), 
+it raises a NoSuchElementException to indicate that these operations are invalid for an empty list.
+
+3. The add method is implemented to create a new non-empty list (Cons instance) by adding an element to the empty list.
+
+
+class Cons(h: Int, t: MyList) extends MyList {
+
+  def head: Int = h 
+
+  def tail: MyList = t
+
+  def isEmpty: Boolean = false
+
+  def add(element: Int): MyList = new Cons(element, this)
+}
+
+- So class is composed of an element that being "h: Int and the rest of the list which 
+is "t: MyList" and so it's a linked list.
+
+- The head is the "h" parameter in the class constructor and the tail is the "t" parameter specified
+  in the constructor.
+
+- The isEmpty method returns false because it's not empty by definition since it contains at least
+1 element. 
+
