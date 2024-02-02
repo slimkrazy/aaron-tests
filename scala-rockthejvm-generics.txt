@@ -1,0 +1,131 @@
+                                    SCALA GENERICS 
+
+
+PROBLEM: 
+Previously, we created a linked list for integers. However, if we want to create a 
+linked list for strings, we would have to duplicate all the code we created and put in string rather than Int.
+This is not efficient and there are better ways of doing this.
+
+SOLUTION: 
+We solve this through collections that store a certain type.
+
+-  In this example, class MyList[A] the type "[A]" represents a generic type. 
+
+- We can make use of this generic type when we instanitiate the class MyList[A] as we'll need to give the object a type rather
+than the class enforcing a type that it was constructed with on all it's instantiations.
+
+- All the code we write in the class MyList will be instantly reusable in the instantiations we make
+regardless of type. For example: 
+
+  val listofIntegers = new MyList[Int]
+  val listofStrings = new MyList[String]
+
+- You can also have multiple generic types/parameter types within square brackets '[]'.  
+
+  class MyMap[Key, Value]
+
+- You can do the same for traits, as in traits can be type parameterised.
+
+
+GENERIC METHODS:
+Let's create a "companion object" for the class MyList. Unlike traits and classes, objects cannot be type parameterised.
+
+ object MyList {
+    def empty[A]: MyList[A] = ???
+ }
+
+This is how we define a method signature type parameterised with a generic type parameter.
+
+- object MyList is a companion object to the MyList Class with a parameterised method called Empty that takes
+a generic type A and returns an instance of the class MyList[A] that doesn't implement anything.
+
+
+HOW WOULD WE USE THIS METHOD?
+
+ val emptyListofIntegers = MyList.empty[Int]
+
+- We've created a variable which equates to us calling the method empty on the class MyList and passing the Int type to 
+the parameterised list
+
+
+VARIANCE PROBLEM:
+
+class Animal
+class Cat extends Animal
+class Dog extends Animal
+
+- If Cat extends Animal does list of Cat extend list of Animal?
+- There are 3 answers to this:
+
+ANSWER 1. Yes list of Cat does extend list of Animal due to a concept known as covariance
+
+class CovariantList[+A] //Uses: We make use of covariance the same way we do when creating objects
+val animal: Animal = new Cat
+val animalist: CovariantList[Animal] = new CovariantList[Cat]
+
+Now can we add animals to this list? For example:
+
+ animalList.add(new Dog) Although as Daniel points out this would actually pollute the list of covariant list
+ of cats. 
+
+ ANSWER 2. No list of Cat and list of Animal are two separate things and the former does not extend the latter.
+
+- This would make it an "invariant list"
+
+ class InvariantList[A] // MyList class at the start is actually an invariant list since the parameterised type has no 
+ signs before or after unlike the covariant.
+
+- Invariant class cannot be substitued for another invariant list so for example:
+
+class InvariantList[A]
+val InvariantAnimalList: InvariantList[Animal] = new InvariantList[Animal] 
+
+The above works but if we were to substitute new InvariantList[Animal] for new InvariantList[Cat] the compiler 
+would start acting up because it is an invariant list. The 2 classes are distinct from eachother.
+
+AMSWER 3. Definitely not due to CONTRAVARIANCE. This concept 
+
+class ContravariantList[-A] // The '-A' signifies to the compiler that the class is contravariant whereas the '+A'
+signifies that the class/list is covariant
+
+val contravariantlist: ContravariantList[Cat] = new ContravariantList[Animal]
+
+
+WHAT FUNCTION DOES A COVARIANT LIST SERVE?
+
+- The covariant and contravariant types are inversions of eachother. Covariant has us have the list of cat 
+extend from the list of animal which makes sense hierachically but contravariance has us extending an animal list from cat 
+which is counterintuitive...unless we use it for specific scenarios. If we're talking about Animal ttrainers for example:
+
+ class Trainer[-A]
+ val trainer: Trainer[Cat] = new Trainer[Animal]
+
+ - We've created a variable named trainer that holds type Trainer with specified parameter of type Cat
+ with the implementation instantiating a Trainer with parameterised Animal. So if we wanted our cat trainer 
+ to extend from the list of Animal trainer this is what the implementation would look like.
+
+
+BOUNDED TYPES:
+
+- Bounded types allow you to use your generic classes only as a subclass of a different type or a superclass of a type.
+ 
+ class Cage[A <: Animal](animal: A) // This means that class Cage only accepts parameter As which are subtypes of Animal.
+ val cage = new Cage(new Dog)
+
+ The declared value cage instantiating cage and passing Dog as the necessary type works because Dog is a subtype of Animal.
+
+
+BOUNDED TYPES SOLVE A PROBLEM PERTAINING TO COVARIANCE:
+
+- class MyList[+A] {
+    // use the type A
+    def add[B >: A] (element: B): MyList[B] = ??? // The add method is parameterised with type B which is a supertype of A and will return a 
+    MyList of B. Meaning if in a List of A(Cat) I put in a B(Animal) which is a supertype of A, then the list will turn into MyList[B].
+    Meaning if you add an Animal to a Cat List it becomes and Animal list.
+
+    /*
+    A = Cat
+    B = Animal 
+    */ 
+}
+
