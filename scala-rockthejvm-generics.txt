@@ -129,3 +129,71 @@ BOUNDED TYPES SOLVE A PROBLEM PERTAINING TO COVARIANCE:
     */ 
 }
 
+
+GENERICS EXERCISES (We're looking to expturn the following MyList class into a generic covariant list):
+
+  abstract class MyList {
+
+  def head: Int // first element of the list
+
+  def tail: MyList // Holds the remainder of the list ans is of type MyList
+
+  def isEmpty: Boolean // Will return a Boolean
+
+  def add(element: Int): MyList // Will return a new list with an element added to it
+
+  def printElements: String
+
+  override def toString: String = "[" + printElements +"]"
+}
+
+ Generic covariant version: 
+
+- abstract class MyList[+A] {
+
+    def head: Int (becomes A)
+
+    def tail: MyList (becomes MyList[A])
+
+    def isEmpty: Boolean
+
+    def add(element: Int): MyList
+     (We need to modify the add signature to [B >: A]. So now element: B which returns MyList[B])
+    def printElements: String 
+}
+
+- Now that we've made the MyList class covariant, the cons abstract subclass of MyList is also covariant. 
+
+ class Cons(h: Int, t: MyList) extends MyList { (becomes Cons[+A](h: A, t:MyList[A] extesnds MyList[A]))
+
+  def head: Int = h (becomes A = h)
+
+  def tail: MyList = t (becomes MyList[A] = t)
+
+  def isEmpty: Boolean = false
+
+  def add(element: Int): MyList = new Cons(element, this) (becomes def add[B >: A](element: B): MyList[B] = new Cons(element, this))
+
+  def printElements: String =
+    if(t.isEmpty) "" + h
+    else h + " " + t.printElements
+}
+
+
+We have made the cons class a generic covariant subclass of the abstract superclass MyList. Now we do the same for Empty subclass.
+
+ object Empty extends MyList { // objects can extend classes. (becomes MyList[Nothing])
+
+  def head: Int = throw new NoSuchElementException // throw expressions are expressions that return nothing (becomes  def head: Nothing = throw new NoSuchElementException)
+
+  def tail: MyList[Nothing] = throw new NoSuchElementException (becomes MyList[Nothing])
+
+  def isEmpty: Boolean = true
+
+  def add(element: Int): MyList = new Cons(element, Empty) (becomes def add[B >: Nothing](element: B): MyList[B] = new Cons(element, Empty)) 
+
+  def printElements: String = ""
+}
+
+
+
