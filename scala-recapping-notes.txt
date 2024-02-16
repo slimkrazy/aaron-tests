@@ -1,0 +1,76 @@
+                                RECAPPING SECTION 1 AND 2
+            
+SIDE EFFECTS:
+
+Side effects implemented via vars allow us to produce effects like print to the console or 
+change the value of a var. They're oushed to the outerlimits of our app code whilst the core uses immutable
+vals for the most part.
+
+ EXPRESSIONS:
+
+ Remember with maths expressions, the order is BODMAS. 
+ 
+ LIST OF RELATIONAL OPERATORS:
+
+ Equal to: == (tests whether two values are equal)
+Not equal to: != (tests whether two values are not equal)
+Greater than: > (tests whether the left operand is greater than the right operand)
+Greater than or equal to: >= (tests whether the left operand is greater than or equal to the right operand)
+Less than: < (tests whether the left operand is less than the right operand)
+Less than or equal to: <= (tests whether the left operand is less than or equal to the
+ right operand)
+
+ - They will produce a boolean to the console.
+
+ 
+ IF EXPRESSIONS:
+
+  val aCondition = true
+  val aConditionedValue = if(aCondition) 5 else 3
+  println(aConditionedValue)
+
+  This will print 5 to the console because on the condition that aCondition is true 
+  print 5 to the console otherwise print 3 
+
+  Remember we start with creating the value that will hold the boolean then the values we want printed 
+  via the if expression test then we print.
+
+
+SIDE EFFECTS:
+
+Side effects are expressions returning unit - Println(), whiles, reassigning with vars
+
+
+CODE BLOCKS:
+
+  val aCodeBlock = {
+    val x: Int = 1
+    val y: Int = 2
+
+    if (x < y) "yh it is" else "no its not"
+  }
+  println(aCodeBlock)
+
+- Remmember, the value of a code block is the value of it's last expression.
+
+
+FUNCTIONS:
+
+-This is how you concatenate:
+
+  def aFunction(a: String, b: Int): String = {
+    a + " " + b
+  }
+
+  println(aFunction("Yo!", 5))
+
+  - To concatenate a and b we use + " " +
+  - So this will print Yo! 5 to the console. 
+
+
+RECURSIVE FUNCTION:
+
+  def aRepeatedFunction(aString: String, n: Int): String = {
+    if (n == 1) aString
+    else aString + aRepeatedFunction(aString, n - 1)
+  }

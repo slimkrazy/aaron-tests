@@ -1,0 +1,145 @@
+                                MORE GENERICS AND ANONYMOUS CLASSES
+
+- To genericise a class, we need to add a parameter like [A] to the name of the class:
+
+class MyList[A] 
+
+- The '[A]' makes the class generic which means that this class can work with elements of any data type
+including Strings and Ints for example.
+
+- This generic [A] data type can be replaced with an actual type as mentioned when an instance of the 
+MyList class is created for example:
+
+class MyList[A] {
+  private var elements: List[A] = List.empty
+
+  def add(element: A): Unit = {
+    elements = elements :+ element
+  }
+
+  def getAll: List[A] = elements
+}
+
+// Example of usage
+val stringList = new MyList[String]
+stringList.add("Apple")
+stringList.add("Banana")
+
+val intList = new MyList[Int]
+intList.add(1)
+intList.add(2)
+
+println(stringList.getAll) // Output: List(Apple, Banana)
+println(intList.getAll)    // Output: List(1, 2)
+
+- The add method is used to add elements to the list 
+- The getALL method returns the list of all elements 
+
+- When we create instances of MyList we specify the actual type parameter:
+
+val stringList = new MyList[String] is an instance of MyList[String] representing
+a list of strings.
+
+val intList = new MyList[Int] is an instance of MyList[Int], representing a list of integers.
+
+
+UNDERSTANDING HOW ADD METHODS WORK:
+
+- Function wise, we always need an add method to add elements to a list.
+
+- Looking closer at this part of the code:
+
+class MyList[A] {
+  private var elements: List[A] = List.empty
+
+  def add(element: A): Unit = {
+    elements = elements :+ element
+  }
+
+  // Other methods...
+}
+
+class MyList[A] {
+  private var elements: List[A] = List.empty
+
+  def add(element: A): Unit = {
+    elements = elements :+ element
+  }
+
+  // Other methods...
+}
+
+private var elements: List[A] = List.empty 
+
+- This elements variable holds the list of
+elements in the MyList and it has been initialised as an empty list "List.empty" of the generic 
+type [A]
+
+def add(element: A): Unit = {
+  elements = elements :+ element
+}
+
+- The add method takes a parameter of type A which is a generic type. This means that we can add 
+elements of any type to the list. The method implementation appends the new element to the existing elements
+list using the :+ operator. THis operator will create a new list with the additional element.
+
+- CRUCIALLY, the add elements variable is mutable which allows it to change and have elements added to it.
+
+- Why is the return type Unit? The add method has a unit return type because unit doesn't return anything meaningful.
+We use this return type when we want to use methods that perform an action like update a state but don't produce a 
+result.
+
+
+MULTIPLE TYPE PARAMETERS:
+
+- We can have multiple type parameters in a class:
+ 
+ class Map[Key, Value]
+
+- Here the class Map has been parameterised with the generic types Key and Value.
+
+- Traits can also be parameterised.
+
+
+COMPANION OBJECTS, WHAT ARE THEY?
+
+- A companion object is an object that has special relationships with a class. They typically
+can access the same private methods of a class and vice versa and have the same name as the class.
+
+COMPANION OBJECT FEATURES:
+
+SHARED NAME:
+- A companion object MUST have the same name as it's associated class.
+
+ACCESS TO PRIVATE MEMBERS:
+- A companion object can access the private members (fields and methods) of its associated class and
+vice versa. 
+
+CLASS LEVEL FUNCTIONALITY:
+- Companion objects are commonly used to define methods or fields that are associated with the class as a whole
+rather that with instances of the class. This is similar to static members in other languages.
+
+CONSTANTS AND FACTORY METHODS:
+- You can define constants or factory methods in a companion object. For example, a companion object might
+include methods to create instances of the associated class or define constants relevant to the class. 
+
+EXAMPLE:
+
+object MyList {
+    def empty[A]: MyList[A] = ??? // When we declare the type parameter "def empty[A]" we can use it in the function definition
+    "MyList[A]". This is an example of a generic method.
+}
+val emptyListofIntegers = MyList.empty[Int] // Here we're making use of the generic method by creating a variable that evaluates to
+us calling the generic empty method on the object MyList and passing the Int type to it.
+
+
+ANONYMOUS CLASSES:
+
+RECAP - WHATS THE DIFFERENCE BETWEEN A CLASS AND A TRAIT?
+
+- A trait is defined using the trait keyword in Scala. It may include abstract methods, concrete methods and fields. 
+- A trait supports mixin composition (can combine them with classes. A class can extend multiple traits)
+- Traits can include abstract and concrete methods.
+- Traits unlike classes can't be instantiated directly and must be mixed into classes.
+
+
